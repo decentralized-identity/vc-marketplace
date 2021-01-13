@@ -15,7 +15,7 @@ This use case document focuses on creating useer story for the VC Marketplace an
 We're focusing on the use cases of providing employment information via verifiable credentials in order for the holder to get access to various services (banking, housing).
 
 ### Most recent version of the user flow
-![https://static.swimlanes.io/2d458ef5dd3c2e6500aeb6dcea19062e.png](https://static.swimlanes.io/2d458ef5dd3c2e6500aeb6dcea19062e.png)
+![https://static.swimlanes.io/6feb1a525d5ca5f1c7c79aafc7e60c8b.png](https://static.swimlanes.io/6feb1a525d5ca5f1c7c79aafc7e60c8b.png)
 
 ### Live swimlane editor
 https://swimlanes.io/u/Xzjf3H06R
