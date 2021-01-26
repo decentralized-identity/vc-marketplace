@@ -1,4 +1,7 @@
 # DIF Verifiable Credential Marketplace 
+
+[![hackmd-github-sync-badge](https://hackmd.io/ZGcQ3Nw9Swe6ntxwpXrR9A/badge)](https://hackmd.io/ZGcQ3Nw9Swe6ntxwpXrR9A)
+
 ## DIF - Claims and Credentials WG 
 
 
