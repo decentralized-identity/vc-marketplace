@@ -13,7 +13,7 @@ Please note that we might not notice a pullrequest in time, but you are free to 
 <details>
 <summary> Meeting information </summary>
 
-* Before your contribute - [**join DIF**](https://identity.foundation/join) and [sign the Claims and Credentials WG charter](https://bit.ly/DIF-WG-select1) (both are required!) 
+* Before you contribute - [**join DIF**](https://identity.foundation/join) and [sign the Claims and Credentials WG charter](https://bit.ly/DIF-WG-select1) (both are required!) 
 * Time: Every Tuesday, 8:00 am-9:00 am ET
 * [Calendar entry](https://calendar.google.com/event?action=TEMPLATE&tmeid=M2VlMGtvMDZmNDh2cDRyNXNicGptN2NpdnBfMjAyMTAxMTJUMTMwMDAwWiBkZWNlbnRyYWxpemVkLmlkZW50aXR5QG0&tmsrc=decentralized.identity%40gmail.com&scp=ALL)
 * [Zoom room](https://us02web.zoom.us/j/87895166241?pwd=R1g5NUJobEZjczQvMWVzNm1OS043UT09), Meeting ID: 878 9516 6241, Password: 906053
@@ -26,8 +26,9 @@ Please note that we might not notice a pullrequest in time, but you are free to 
 <details>
 <summary> Topics for upcoming meetings</summary>
 
-* Sections that need work: 
-    
+- Review DIF F2F comments
+- Review Employment-Finance usecase
+- Announcements with reference architecture
 
 
 </details>
