@@ -36,14 +36,35 @@ Please note that we might not notice a pullrequest in time, but you are free to 
 
 </details>
 
+## Meeting - 02 Feb 2021 - (800 ET)
+ 
+### Attendees
+- Martin Riedel
+- Balazs Nemethi
+- Kishore Bhatia
+- Stepan Gershuni
+- Sandeep Bajjuri
+
+
+### Agenda
+- F2F updates
+   - There was an expression of interest and the problem statement has been shared by the audience
+- Use case presentations and Questions from the perspective of Issuer, Verifier and Holder
+
+
 ## Meeting - 26 Jan 2021 - (800 ET)
  
 ### Attendees
-- [x](xxx@gmail.com)
+- Stepan Gershuni
+- Kishore Bhatia
+- Sandeep Bajjuri
+- Balazs Nemethi
+- Tomislav
 
 
 ### Agenda
 
 - Welcome / Introductions
+- Review the first draft of the reference architecture
 
 
