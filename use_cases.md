@@ -11,3 +11,11 @@
 ### Employment
 
 [Using Employment Credentials to Get a Loan, Rent a House](https://swimlanes.io/u/Xzjf3H06R)
+
+### Vending
+
+[Requesting an age-gated product at a vending machine](https://swimlanes.io/u/wswKEUgUy)
+
+### Credential Chaining
+
+[Requesting a university transcript](https://swimlanes.io/u/vB2wZoJjT)
