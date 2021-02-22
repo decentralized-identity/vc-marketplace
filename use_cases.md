@@ -19,3 +19,7 @@
 ### Credential Chaining
 
 [Requesting a university transcript](https://swimlanes.io/u/vB2wZoJjT)
+
+### Credential Discovery by Crawling
+
+[Discover credential manifest by (web-)crawling](https://swimlanes.io/u/IXYpCXzX7)
