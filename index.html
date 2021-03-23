@@ -67,8 +67,20 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <h2 id="abstract"><a class="toc-anchor" href="#abstract" >§</a> Abstract</h2>
 <hr>
 <p>Work in copy of <a path-0="Hack.md"href="http://Hack.md" ><span>Hack.md</span></a></p>
-<h1 id="proposed-generalized-interface-marketplace-definitions"><a class="toc-anchor" href="#proposed-generalized-interface-marketplace-definitions" >§</a> Proposed Generalized (Interface) Marketplace Definitions</h1>
-<h2 id="issuer-vc-registration"><a class="toc-anchor" href="#issuer-vc-registration" >§</a> Issuer: VC Registration</h2>
+<h2 id="marketplace-use-cases"><a class="toc-anchor" href="#marketplace-use-cases" >§</a> Marketplace Use Cases</h2>
+<h3 id="payment-motivated-uc"><a class="toc-anchor" href="#payment-motivated-uc" >§</a> Payment-motivated UC</h3>
+<ul>
+<li>Payment during issuance</li>
+<li>Payment during presentation</li>
+</ul>
+<h3 id="buying-art-at-a-swiss-auction"><a class="toc-anchor" href="#buying-art-at-a-swiss-auction" >§</a> Buying art at a swiss auction.</h3>
+<p>Swimlanes.</p>
+<h3 id="beibehaltungsgenehmigung-and-citizenship"><a class="toc-anchor" href="#beibehaltungsgenehmigung-and-citizenship" >§</a> Beibehaltungsgenehmigung and Citizenship</h3>
+<ul>
+<li>need</li>
+</ul>
+<h2 id="proposed-generalized-interface-marketplace-definitions"><a class="toc-anchor" href="#proposed-generalized-interface-marketplace-definitions" >§</a> Proposed Generalized (Interface) Marketplace Definitions</h2>
+<h3 id="issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many"><a class="toc-anchor" href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >§</a> Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</h3>
 <ul>
 <li>A Marketplace is the collection of Issuer-based Credenial Manifests</li>
 <li>Issuer Metadata (incl. Reputation information)
@@ -99,63 +111,12 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </ul>
 </li>
 </ul>
-<h3 id="why-display-and-styling-should-not-be-part-of-a-vc-registration-process"><a class="toc-anchor" href="#why-display-and-styling-should-not-be-part-of-a-vc-registration-process" >§</a> Why Display and Styling should not be part of a VC Registration Process</h3>
-<ul>
-<li>Styling is commonly extracted into a dedicated filestructure format (css, sass)</li>
-<li>Display/Styling requirements will grow and the format requirements will grow.</li>
-<li>Crawlers / Marketplaces / Search Engines would not require this information</li>
-</ul>
-<h2 id="subject-initiated-issuer-discovery"><a class="toc-anchor" href="#subject-initiated-issuer-discovery" >§</a> Subject-initiated Issuer-Discovery</h2>
-<p>See call 3/9</p>
-<h2 id="reputation"><a class="toc-anchor" href="#reputation" >§</a> Reputation</h2>
-<ul>
-<li>Reputation for all entities</li>
-</ul>
-<h2 id="track-credential-issuance-payment-coordination"><a class="toc-anchor" href="#track-credential-issuance-payment-coordination" >§</a> Track Credential Issuance (&amp; Payment Coordination)</h2>
-<ul>
-<li>Transaction Record (Issuance)</li>
-<li>Start of TX should be recorded (by Issuer)</li>
-<li>Stop (Issuance) of TX should be recorded (Holder)</li>
-</ul>
-<h2 id="track-credential-presentation-payment-coordination"><a class="toc-anchor" href="#track-credential-presentation-payment-coordination" >§</a> Track Credential Presentation (&amp; Payment Coordination)</h2>
-<ul>
-<li>Transaction Record (Presentation)</li>
-</ul>
-<h2 id="track-credential-revocation-payment-coordination"><a class="toc-anchor" href="#track-credential-revocation-payment-coordination" >§</a> Track Credential Revocation (&amp; Payment Coordination)</h2>
-<ul>
-<li>Transaction Record (Revocation)</li>
-</ul>
-<h1 id="discussion-points"><a class="toc-anchor" href="#discussion-points" >§</a> Discussion Points</h1>
-<h3 id="reputation-2"><a class="toc-anchor" href="#reputation-2" >§</a> Reputation</h3>
-<ul>
-<li>Should we add Reputation into the Marketplace UC?</li>
-<li>Indepenent of other things all Marketplaces need a standardized interface for issuers to register the Credential Capabilities</li>
-<li>These Capabilities</li>
-<li>Reputation “should be up the Marketplace”. E.g. some may use token-based incentive Model. Others might use free market forces (“cheapest”), others might use “traditional web” reputation systems.</li>
-<li>How can an individual query different reputation systems in a standardized way?</li>
-<li>E.g. this group should define a standardized interface to be able to query reputation for a DID?</li>
-<li>0-100 with the following distribution: normal?</li>
-<li>Marketplace can chose to not expose any reputation score.</li>
-<li>Can Reputation Systems be dynamically integrated into Marketplace implementations (e.g. plugs in external provider.)</li>
-<li>Reputation for Holder/Subject should be out-of-scope.</li>
-<li>Reputation Scope for Marketplace should be limited to Verifier/Issuer.</li>
-<li>For the Holder we might want to have p2p reputation proof</li>
-<li>Can we enable Reputation system with only using VCs but not designing the whole reputation methodology?</li>
-<li>Holder can issue their Reputation VC ad-hoc, compiling from data they already have</li>
-</ul>
-<h3 id="issuer-metadata"><a class="toc-anchor" href="#issuer-metadata" >§</a> Issuer Metadata</h3>
+<h3 id="further-notes-issuer-registration"><a class="toc-anchor" href="#further-notes-issuer-registration" >§</a> Further Notes Issuer Registration</h3>
 <ul>
 <li>Issuer Service: put it as a service endpoint in DID. Responsibility of the Issuer to host and maintain this information.</li>
-</ul>
-<h3 id="payment"><a class="toc-anchor" href="#payment" >§</a> Payment</h3>
-<ul>
-<li>Payment is often controversial, however a egalitarian marketplace would be able to drive standardization of Credential Schema and Formats.</li>
-</ul>
-<h1 id="open-questions"><a class="toc-anchor" href="#open-questions" >§</a> Open Questions:</h1>
-<ul>
 <li>One can image Issuance Use-Cases where a single Action/Process can result in &gt;1 Credential from the Issuer.
 <ul>
-<li>–&gt; Manifest Bindung of Issuer &lt;-&gt; Credential is not ideal for that.</li>
+<li>–&gt; Manifest Binding of Issuer &lt;-&gt; Credential is not ideal for that.</li>
 <li>1st Solution: Data format defines Issuing Process --&gt; multiple Credential</li>
 <li>2nd Solution: Marketplace is able to programmatically discover credentials from the Issuer that share the same Validation Process (Presentation Definition)</li>
 </ul>
@@ -166,9 +127,9 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <p>Discovery is the responsibility of Marketplace operator / system, rather than every individual issuer / verifier.</p>
 <p>What are the options to collect credential data?</p>
 <ul>
+<li>Active registration by the issuer (“triggers crawling of targeted domain”).</li>
 <li>Web crawler</li>
-<li>P2P gossip (@Daniel For sync of multiple Marketplace instances)</li>
-<li>Active regisration by the issuer (“triggers crawling of targeted domain”).</li>
+<li>P2P gossip (Would not require participant to be discoverable via DNS).</li>
 </ul>
 <p>How the data is stored?</p>
 <ul>
@@ -240,6 +201,73 @@ m:1
 Multiple Verification Process -&gt; Multiple Credentials (DOES NOT MAKE SENSE)
 n:m</li>
 </ul>
+<h4 id="why-display-and-styling-should-not-be-part-of-a-vc-registration-process"><a class="toc-anchor" href="#why-display-and-styling-should-not-be-part-of-a-vc-registration-process" >§</a> Why Display and Styling should not be part of a VC Registration Process</h4>
+<ul>
+<li>Styling is commonly extracted into a dedicated filestructure format (css, sass)</li>
+<li>Display/Styling requirements will grow and the format requirements will grow.</li>
+<li>Crawlers / Marketplaces / Search Engines would not require this information</li>
+</ul>
+<h3 id="subject-initiated-issuer-discovery"><a class="toc-anchor" href="#subject-initiated-issuer-discovery" >§</a> Subject-initiated Issuer-Discovery</h3>
+<p>Subject trying to discover a VC/Issuer (with certain matched constraints) that can be issued from an issuer?</p>
+<h3 id="reputation"><a class="toc-anchor" href="#reputation" >§</a> Reputation</h3>
+<ul>
+<li>Reputation for all entities</li>
+</ul>
+<h4 id="notes"><a class="toc-anchor" href="#notes" >§</a> Notes:</h4>
+<ul>
+<li>Should we add Reputation into the Marketplace UC?</li>
+<li>Indepenent of other things all Marketplaces need a standardized interface for issuers to register the Credential Capabilities</li>
+<li>These Capabilities</li>
+<li>Reputation “should be up the Marketplace”. E.g. some may use token-based incentive Model. Others might use free market forces (“cheapest”), others might use “traditional web” reputation systems.</li>
+<li>How can an individual query different reputation systems in a standardized way?</li>
+<li>E.g. this group should define a standardized interface to be able to query reputation for a DID?</li>
+<li>0-100 with the following distribution: normal?</li>
+<li>Marketplace can chose to not expose any reputation score.</li>
+<li>Can Reputation Systems be dynamically integrated into Marketplace implementations (e.g. plugs in external provider.)</li>
+<li>Reputation for Holder/Subject should be out-of-scope.</li>
+<li>Reputation Scope for Marketplace should be limited to Verifier/Issuer.</li>
+<li>For the Holder we might want to have p2p reputation proof</li>
+<li>Can we enable Reputation system with only using VCs but not designing the whole reputation methodology?</li>
+<li>Holder can issue their Reputation VC ad-hoc, compiling from data they already have</li>
+</ul>
+<h3 id="track-credential-issuance-payment-coordination"><a class="toc-anchor" href="#track-credential-issuance-payment-coordination" >§</a> Track Credential Issuance (&amp; Payment Coordination)</h3>
+<ul>
+<li>Transaction Record (Issuance)</li>
+<li>Start of TX should be recorded (by Issuer)</li>
+<li>Stop (Issuance) of TX should be recorded (Holder)</li>
+</ul>
+<h3 id="track-credential-presentation-payment-coordination"><a class="toc-anchor" href="#track-credential-presentation-payment-coordination" >§</a> Track Credential Presentation (&amp; Payment Coordination)</h3>
+<ul>
+<li>Transaction Record (Presentation)</li>
+</ul>
+<h3 id="track-credential-revocation-payment-coordination"><a class="toc-anchor" href="#track-credential-revocation-payment-coordination" >§</a> Track Credential Revocation (&amp; Payment Coordination)</h3>
+<ul>
+<li>Transaction Record (Revocation)</li>
+</ul>
+<h2 id="cross-sectional-concerns"><a class="toc-anchor" href="#cross-sectional-concerns" >§</a> Cross-sectional concerns</h2>
+<h2 id="marketplace-bootstrapping"><a class="toc-anchor" href="#marketplace-bootstrapping" >§</a> Marketplace Bootstrapping</h2>
+<ul>
+<li>Initial Issuer-Vetting by Marketplace during Registration</li>
+</ul>
+<h2 id="payment-detail-section"><a class="toc-anchor" href="#payment-detail-section" >§</a> Payment (Detail Section)</h2>
+<ul>
+<li>Payment is often controversial, however a egalitarian marketplace would be able to drive standardization of Credential Schema and Formats.</li>
+<li>“Traffic” is hidden for general public, but accessible to participants</li>
+</ul>
+<h2 id="discussion-points"><a class="toc-anchor" href="#discussion-points" >§</a> Discussion Points</h2>
+<h3 id="open-discussion"><a class="toc-anchor" href="#open-discussion" >§</a> Open Discussion</h3>
+<ol>
+<li>Registration of Verifiers? Collection of Metadata Collection?</li>
+</ol>
+<ul>
+<li>Issuer may want to “block” usage of credentials for certain verifiers: <strong>Consensus: Should not be supported</strong></li>
+<li>Payment Problem: “A Verifier has a “special price” for consuming certain issuer-credentials.” (ideally “hidden”). Privacy Coins.
+<ul>
+<li>“Cashback” Option.</li>
+</ul>
+</li>
+<li>Discoverability: @Talk to Stephan</li>
+</ul>
 <h2 id="subject-initiated-issuer-discovery-2"><a class="toc-anchor" href="#subject-initiated-issuer-discovery-2" >§</a> Subject-initiated Issuer-Discovery</h2>
 <ul>
 <li>What does the query look like?</li>
@@ -271,20 +299,38 @@ n:m</li>
                       <div id="toc_list">
                         <ul class="toc">
 <li><a href="#abstract" >Abstract</a></li>
-<li><a href="#issuer-vc-registration" >Issuer: VC Registration</a>
+<li><a href="#marketplace-use-cases" >Marketplace Use Cases</a>
+<ul>
+<li><a href="#payment-motivated-uc" >Payment-motivated UC</a></li>
+<li><a href="#buying-art-at-a-swiss-auction" >Buying art at a swiss auction.</a></li>
+<li><a href="#beibehaltungsgenehmigung-and-citizenship" >Beibehaltungsgenehmigung and Citizenship</a></li>
+</ul>
+</li>
+<li><a href="#proposed-generalized-interface-marketplace-definitions" >Proposed Generalized (Interface) Marketplace Definitions</a>
+<ul>
+<li><a href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</a></li>
+<li><a href="#further-notes-issuer-registration" >Further Notes Issuer Registration</a>
 <ul>
 <li><a href="#why-display-and-styling-should-not-be-part-of-a-vc-registration-process" >Why Display and Styling should not be part of a VC Registration Process</a></li>
 </ul>
 </li>
 <li><a href="#subject-initiated-issuer-discovery" >Subject-initiated Issuer-Discovery</a></li>
-<li><a href="#reputation" >Reputation</a></li>
+<li><a href="#reputation" >Reputation</a>
+<ul>
+<li><a href="#notes" >Notes:</a></li>
+</ul>
+</li>
 <li><a href="#track-credential-issuance-payment-coordination" >Track Credential Issuance (&amp; Payment Coordination)</a></li>
 <li><a href="#track-credential-presentation-payment-coordination" >Track Credential Presentation (&amp; Payment Coordination)</a></li>
-<li><a href="#track-credential-revocation-payment-coordination" >Track Credential Revocation (&amp; Payment Coordination)</a>
+<li><a href="#track-credential-revocation-payment-coordination" >Track Credential Revocation (&amp; Payment Coordination)</a></li>
+</ul>
+</li>
+<li><a href="#cross-sectional-concerns" >Cross-sectional concerns</a></li>
+<li><a href="#marketplace-bootstrapping" >Marketplace Bootstrapping</a></li>
+<li><a href="#payment-detail-section" >Payment (Detail Section)</a></li>
+<li><a href="#discussion-points" >Discussion Points</a>
 <ul>
-<li><a href="#reputation-2" >Reputation</a></li>
-<li><a href="#issuer-metadata" >Issuer Metadata</a></li>
-<li><a href="#payment" >Payment</a></li>
+<li><a href="#open-discussion" >Open Discussion</a></li>
 </ul>
 </li>
 <li><a href="#subject-initiated-issuer-discovery-2" >Subject-initiated Issuer-Discovery</a></li>
