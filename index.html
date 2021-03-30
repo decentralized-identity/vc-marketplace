@@ -76,13 +76,26 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <h3 id="buying-art-at-a-swiss-auction"><a class="toc-anchor" href="#buying-art-at-a-swiss-auction" >§</a> Buying art at a swiss auction.</h3>
 <p>Swimlanes.</p>
 <h3 id="beibehaltungsgenehmigung-and-citizenship"><a class="toc-anchor" href="#beibehaltungsgenehmigung-and-citizenship" >§</a> Beibehaltungsgenehmigung and Citizenship</h3>
-<ul>
-<li>need</li>
-</ul>
+<p>TODO @Martin: Add example for Beibehaltungsgenehmigung.</p>
+<h3 id="credential-discovery-by-webcrawling"><a class="toc-anchor" href="#credential-discovery-by-webcrawling" >§</a> Credential Discovery by Webcrawling</h3>
+<p>Sequence Diagram example:</p>
+<div class="mermaid">
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+</div>
 <h2 id="proposed-generalized-interface-marketplace-definitions"><a class="toc-anchor" href="#proposed-generalized-interface-marketplace-definitions" >§</a> Proposed Generalized (Interface) Marketplace Definitions</h2>
 <h3 id="issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many"><a class="toc-anchor" href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >§</a> Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</h3>
 <ul>
-<li>A Marketplace is the collection of Issuer-based Credenial Manifests</li>
+<li>A Marketplace is the collection of Issuer-based Credential Manifests</li>
 <li>Issuer Metadata (incl. Reputation information)
 <ul>
 <li>Issuer self-reported information</li>
@@ -110,6 +123,14 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <li>Should this chain of versions be available to external requesters</li>
 </ul>
 </li>
+<li>“Issuer Authority”:
+<ul>
+<li>When discovering VC capabilities of an Issuer the Marketplace also discovers “Authority Credentials”
+that are given from higher-level authorities. (E.g. Vaccine Credential, Currency Conversion).</li>
+<li>Is this “Authority Credential” bound to the Issuer OR Issuer (University) + Credential Type (Degree):</li>
+<li>This information can be indexed by the Marketplace</li>
+</ul>
+</li>
 </ul>
 <h3 id="further-notes-issuer-registration"><a class="toc-anchor" href="#further-notes-issuer-registration" >§</a> Further Notes Issuer Registration</h3>
 <ul>
@@ -123,7 +144,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </li>
 <li>Marketplace can drive convergance if the usage data for Credential Types is transparent.</li>
 </ul>
-<h1 id="call-0309-discovery-stage-of-vc-issuers-verifiers"><a class="toc-anchor" href="#call-0309-discovery-stage-of-vc-issuers-verifiers" >§</a> Call 03.09 — Discovery stage (of VC Issuers &amp; Verifiers?)</h1>
+<h4 id="call-0309-discovery-stage-of-vc-issuers-verifiers"><a class="toc-anchor" href="#call-0309-discovery-stage-of-vc-issuers-verifiers" >§</a> Call 03.09 — Discovery stage (of VC Issuers &amp; Verifiers?)</h4>
 <p>Discovery is the responsibility of Marketplace operator / system, rather than every individual issuer / verifier.</p>
 <p>What are the options to collect credential data?</p>
 <ul>
@@ -274,6 +295,48 @@ n:m</li>
 <li>Incl. Issuer-Based Reputation Score</li>
 <li>Can we use Presentation Exchange</li>
 </ul>
+<h2 id="meetings"><a class="toc-anchor" href="#meetings" >§</a> Meetings</h2>
+<h3 id="meeting-notes-2020330"><a class="toc-anchor" href="#meeting-notes-2020330" >§</a> Meeting Notes 2020/3/30:</h3>
+<ul>
+<li>
+<p>Ticket for UC Migration</p>
+</li>
+<li>
+<p>Ticket for Marketplace Terminology</p>
+</li>
+<li>
+<p>Centralization vs Decentralization</p>
+</li>
+<li>
+<p>There can be multiple Marketplace operated in different juristiction / associated with different content</p>
+</li>
+<li>
+<p>Users are free to migrate</p>
+</li>
+<li>
+<p>Metamarketplace? Does this spec need to define data sharing between marketplaces.</p>
+<ul>
+<li>Definition: Standard and Industry Bodies maintain a registry of existing marketplaces.</li>
+<li>Marketplace could enable easier credential migration from one juristiction to another:</li>
+<li>If CredentialTypes between jurisdiction are not interoperable there could be authorized
+conversion issuers that allow to migrate Cred A -&gt; Cred B</li>
+<li>How are several individual “Marketplaces” registered?</li>
+<li>Compare to DEX (I don’t need permission to “onboard to Dex”).</li>
+<li>Decision: Marketplace are no individual entities that need to be registered/identified by a higher
+entity.</li>
+<li>Challenge: Reputation Migration? Reputation Sharing.</li>
+</ul>
+</li>
+<li>
+<p>Incentives for an “open” Marketplace are hard to solve.</p>
+</li>
+<li>
+<p>Does this spec need answer “Marketplace Authority”?</p>
+</li>
+<li>
+<p>Outlook: Transfer UC, Write Abstract, Structure “Issuer Discovery Section”</p>
+</li>
+</ul>
 
                     </article>    
       
@@ -304,6 +367,7 @@ n:m</li>
 <li><a href="#payment-motivated-uc" >Payment-motivated UC</a></li>
 <li><a href="#buying-art-at-a-swiss-auction" >Buying art at a swiss auction.</a></li>
 <li><a href="#beibehaltungsgenehmigung-and-citizenship" >Beibehaltungsgenehmigung and Citizenship</a></li>
+<li><a href="#credential-discovery-by-webcrawling" >Credential Discovery by Webcrawling</a></li>
 </ul>
 </li>
 <li><a href="#proposed-generalized-interface-marketplace-definitions" >Proposed Generalized (Interface) Marketplace Definitions</a>
@@ -311,6 +375,7 @@ n:m</li>
 <li><a href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</a></li>
 <li><a href="#further-notes-issuer-registration" >Further Notes Issuer Registration</a>
 <ul>
+<li><a href="#call-0309-discovery-stage-of-vc-issuers-verifiers" >Call 03.09 — Discovery stage (of VC Issuers &amp; Verifiers?)</a></li>
 <li><a href="#why-display-and-styling-should-not-be-part-of-a-vc-registration-process" >Why Display and Styling should not be part of a VC Registration Process</a></li>
 </ul>
 </li>
@@ -334,6 +399,11 @@ n:m</li>
 </ul>
 </li>
 <li><a href="#subject-initiated-issuer-discovery-2" >Subject-initiated Issuer-Discovery</a></li>
+<li><a href="#meetings" >Meetings</a>
+<ul>
+<li><a href="#meeting-notes-2020330" >Meeting Notes 2020/3/30:</a></li>
+</ul>
+</li>
 </ul>
 
                       </div>

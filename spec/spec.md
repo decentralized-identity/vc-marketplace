@@ -34,12 +34,28 @@ Work in copy of Hack.md
 Swimlanes.
 
 ### Beibehaltungsgenehmigung and Citizenship
-- need
+TODO @Martin: Add example for Beibehaltungsgenehmigung.
+
+### Credential Discovery by Webcrawling
+Sequence Diagram example:
+```mermaid
+sequenceDiagram
+    participant Alice
+    participant Bob
+    Alice->>John: Hello John, how are you?
+    loop Healthcheck
+        John->>John: Fight against hypochondria
+    end
+    Note right of John: Rational thoughts <br/>prevail!
+    John-->>Alice: Great!
+    John->>Bob: How about you?
+    Bob-->>John: Jolly good!
+```
 
 ## Proposed Generalized (Interface) Marketplace Definitions
 
 ### Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)
-- A Marketplace is the collection of Issuer-based Credenial Manifests
+- A Marketplace is the collection of Issuer-based Credential Manifests
 - Issuer Metadata (incl. Reputation information)
     - Issuer self-reported information
     - Collected through crawling
@@ -55,6 +71,12 @@ Swimlanes.
 - Versioning
     - Should the format allow to specify previous versions
     - Should this chain of versions be available to external requesters
+- "Issuer Authority":
+    - When discovering VC capabilities of an Issuer the Marketplace also discovers "Authority Credentials"
+    that are given from higher-level authorities. (E.g. Vaccine Credential, Currency Conversion).
+    - Is this "Authority Credential" bound to the Issuer OR Issuer (University) + Credential Type (Degree):
+    - This information can be indexed by the Marketplace
+      
   
 ### Further Notes Issuer Registration
 - Issuer Service: put it as a service endpoint in DID. Responsibility of the Issuer to host and maintain this information.
@@ -64,7 +86,7 @@ Swimlanes.
   - 2nd Solution: Marketplace is able to programmatically discover credentials from the Issuer that share the same Validation Process (Presentation Definition)
 - Marketplace can drive convergance if the usage data for Credential Types is transparent.
 
-# Call 03.09 — Discovery stage (of VC Issuers & Verifiers?)
+#### Call 03.09 — Discovery stage (of VC Issuers & Verifiers?)
 
 Discovery is the responsibility of Marketplace operator / system, rather than every individual issuer / verifier.
 
@@ -183,3 +205,25 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
 - What does the query look like?
 - Incl. Issuer-Based Reputation Score
 - Can we use Presentation Exchange
+
+## Meetings
+### Meeting Notes 2020/3/30:
+- Ticket for UC Migration
+- Ticket for Marketplace Terminology
+- Centralization vs Decentralization
+ - There can be multiple Marketplace operated in different juristiction / associated with different content 
+ - Users are free to migrate
+- Metamarketplace? Does this spec need to define data sharing between marketplaces.
+  - Definition: Standard and Industry Bodies maintain a registry of existing marketplaces.
+  - Marketplace could enable easier credential migration from one juristiction to another:
+  - If CredentialTypes between jurisdiction are not interoperable there could be authorized
+  conversion issuers that allow to migrate Cred A -> Cred B
+  - How are several individual "Marketplaces" registered?
+  - Compare to DEX (I don't need permission to "onboard to Dex").
+  - Decision: Marketplace are no individual entities that need to be registered/identified by a higher
+  entity.
+  - Challenge: Reputation Migration? Reputation Sharing.
+- Incentives for an "open" Marketplace are hard to solve.
+- Does this spec need answer "Marketplace Authority"? 
+
+- Outlook: Transfer UC, Write Abstract, Structure "Issuer Discovery Section"
