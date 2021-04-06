@@ -227,3 +227,45 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
 - Does this spec need answer "Marketplace Authority"? 
 
 - Outlook: Transfer UC, Write Abstract, Structure "Issuer Discovery Section"
+
+### Meeting Notes 2020/4/7:
+#### Topic: Subject-initiated Issuer-Discovery
+
+- Brainstorming Query Properties:
+  - Credential
+    - CredentialType (single)
+    - CredentialType (multiple)
+    - Price (per issuance)
+    - Price (per usage)
+    - Credential Constraints:
+      - CredentialType ProofOfCitizenship with value == US
+      - CredentialType DriverLicense with value age >= 21
+      - Can an Issuer put these constraints into the Credential Manifest?
+      - Symmetry between PD and Manifest for representing these contstraints.
+  - Issuer:
+    - by Identifier (unique)
+    - by Reputation
+    - by Location
+    - by Jurisdiction (how?)
+    - by Trust Graph (see Notes discussion)
+       - Issuers expose "trusted relationships" by VC (Issuer A trust Issuer B)
+       - "find all the issuers that are authorized by the DHS"
+  
+
+### Examples
+- "I would like to get a credential type X from an Issuer I that was authorized by a credential
+  of the German Government with ID Y. (e.g. Issuer has a credential that was issued by the Government)"
+  
+### Question
+- Marketplaces can be curated for any of these properties already, e.g. only containing credentials
+of a certain type. "Educational Credential Marketplace".
+
+### Note
+- Datastructure: Directed Graph: Vertices are Issuers and Edges are Credentials:
+  - Issuer A -> Issuer B ("A authorizes B")
+  - Issuer B -> Issuer C ("B authorizes C")
+- Are further qualifiers required for that relationship?
+  - Compare to PKI structure.
+- Do we want to define that VCs.  
+- Marketplace maintains a queryable snapshot of that graph.  
+- Root of Trust (total trust), Self Issued (no trust), Reputation System (continuous)
