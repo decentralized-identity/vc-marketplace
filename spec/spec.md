@@ -74,20 +74,59 @@ Add Sequence Diagram for UC.
 
 ### Discover credential manifest by (web-)crawling
 #### Personas
+[[def: University, Educational Degree Issuer]]:
+~ The University is a federally acknowledged institution that is able to issue educational degrees to its students.
+
+[[def: Student, Transcript Credential Subject and Holder]]:
+~ The (former) Student attends or has attended a University and is able to receive a Transcript Credential from the University. Students are also the main Holders of their own educational credentials.
+As part of this Use Case the Student is also the Subject of a "National ID Card"
+
+[[def: VC Marketplace]]:
+~ See Abstract.
+
+[[def: Government]]:
+~ A national government capable of issuing "National ID Card" credentials to its citizens and permanent residents.
+
 #### Description
+This Use-Cases mirrors the Behavior of "Requesting a university transcript" but with initial "Manifest Discovery"
+via web-crawling and not by active registration.s
+
 #### Sequence Diagram
 ```mermaid
 sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
+    participant U as University
+    participant S as Student
+    participant M as VC Marketplace
+    participant G as Government
+    note over U: A university capable of issuing "transcript" credentials
+    note over G: A national government capable of issuing "National ID Card" credentials
+    note over S: A former student of the university requesting a formal transcript credential
+    opt Before
+      G->>G: Self-Publish IdDocument {Country = Germany} Manifest
+      U->>U: Self-Publish Transcript {University = XYZ}
+      M->>G: Discover Manifest by (web-)crawling
+      M->>U: Discover Manifest by (web-)crawling
     end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
+    S->>M: Lookup
+    note over S,M: Credential = Transcript
+    note over S,M: Constraint = University = XYZ
+    M->>S: :[University DID]
+    S->>U: Request Transcript
+    opt
+      U->>S: Request country
+      S->>U: :country = Germany
+    end
+    U->>S: Request IdDocument credential {country = Germany}
+    S->>M: Lookup
+    note over S,M: Credential = IdDocument
+    note over S,M: Constraint = Country = Germany
+    M->>S: :[Government DID]
+    S->>G: Request IdDocument
+    G->>G: ...Validate identity
+    G->>S: :IdDocument Credential
+    S->>U: :IdDocument Credential
+    U->>S: :Transcript Credential
+    
 ```
 
 
