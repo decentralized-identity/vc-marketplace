@@ -493,7 +493,7 @@ entity.</li>
 </li>
 </ul>
 </li>
-<li>Issuer:
+<li>Issuer
 <ul>
 <li>by Identifier (unique)</li>
 <li>by Reputation</li>
@@ -503,6 +503,23 @@ entity.</li>
 <ul>
 <li>Issuers expose “trusted relationships” by VC (Issuer A trust Issuer B)</li>
 <li>“find all the issuers that are authorized by the DHS”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Issuing Process (what’s needed to receive the VC)
+<ul>
+<li>Presentation Defnition</li>
+</ul>
+</li>
+<li>Marketplace parameters
+<ul>
+<li>Ordering of the response
+<ul>
+<li>Price</li>
+<li>Issuer / verifier reputation</li>
+<li>Jurisdiction / compliance rules</li>
+<li>Trust Graph</li>
 </ul>
 </li>
 </ul>
@@ -536,6 +553,52 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li>Do we want to define that VCs.</li>
 <li>Marketplace maintains a queryable snapshot of that graph.</li>
 <li>Root of Trust (total trust), Self Issued (no trust), Reputation System (continuous)</li>
+</ul>
+<h2 id="meeting-notes-4132021"><a class="toc-anchor" href="#meeting-notes-4132021" >§</a> Meeting Notes 4/13/2021</h2>
+<h3 id="iiw-presentation"><a class="toc-anchor" href="#iiw-presentation" >§</a> IIW Presentation</h3>
+<ul>
+<li>Discuss Issuer relationship model (see previous section)</li>
+<li>Presentation team: Martin, Ravikant, (if needed) Stepan</li>
+<li><a path-0="internetidentityworkshop.com"path-1="schedule"path-2=""href="https://internetidentityworkshop.com/schedule/" ><span>https://internetidentityworkshop.com/schedule/</span></a> (Apr 20-22)</li>
+</ul>
+<h3 id="refining-query-properties"><a class="toc-anchor" href="#refining-query-properties" >§</a> Refining Query Properties</h3>
+<ul>
+<li>
+<p>How do we effectively query mutliple credentials?</p>
+<ul>
+<li>They are linked by the issuer process defined in the Credential Manifest</li>
+</ul>
+</li>
+<li>
+<p>What should be the response of the Marketplace?</p>
+<ul>
+<li>Ordered list of matches
+<ul>
+<li>Who controls the ordering? Should be users ultimately in charge</li>
+</ul>
+</li>
+<li>Individual Match:
+<ul>
+<li>Issuer metadata (location, reputation, etc.)</li>
+<li>Credential metadata (price, type, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Open question: do we need to specify issuance process? if so, is it only Presentation Def. or also offline / not VC-based process as well?</p>
+</li>
+</ul>
+<h3 id="vc-marketplace-business-models"><a class="toc-anchor" href="#vc-marketplace-business-models" >§</a> VC Marketplace business models</h3>
+<ul>
+<li>Credential Issuance: one-time payment ($: H -&gt; I)</li>
+<li>Credential Presentation: per use payment ($: V -&gt; I)</li>
+<li>Credential Presentation: holder has VC, how can she monetize it? ($: V -&gt; H)
+<ul>
+<li>who is getting paid in this last case (subject or holder)?</li>
+<li>how is price negotiation happening (p2p, thru marketplace)?</li>
+</ul>
+</li>
 </ul>
 
                     </article>    
@@ -662,6 +725,13 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#examples" >Examples</a></li>
 <li><a href="#question" >Question</a></li>
 <li><a href="#note" >Note</a></li>
+</ul>
+</li>
+<li><a href="#meeting-notes-4132021" >Meeting Notes 4/13/2021</a>
+<ul>
+<li><a href="#iiw-presentation" >IIW Presentation</a></li>
+<li><a href="#refining-query-properties" >Refining Query Properties</a></li>
+<li><a href="#vc-marketplace-business-models" >VC Marketplace business models</a></li>
 </ul>
 </li>
 </ul>

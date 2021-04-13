@@ -392,7 +392,7 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
       - CredentialType DriverLicense with value age >= 21
       - Can an Issuer put these constraints into the Credential Manifest?
       - Symmetry between PD and Manifest for representing these contstraints.
-  - Issuer:
+  - Issuer
     - by Identifier (unique)
     - by Reputation
     - by Location
@@ -400,8 +400,15 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
     - by Trust Graph (see Notes discussion)
        - Issuers expose "trusted relationships" by VC (Issuer A trust Issuer B)
        - "find all the issuers that are authorized by the DHS"
+  - Issuing Process (what's needed to receive the VC)
+    - Presentation Defnition
+  - Marketplace parameters
+    - Ordering of the response
+      - Price
+      - Issuer / verifier reputation
+      - Jurisdiction / compliance rules
+      - Trust Graph
   
-
 ### Examples
 - "I would like to get a credential type X from an Issuer I that was authorized by a credential
   of the German Government with ID Y. (e.g. Issuer has a credential that was issued by the Government)"
@@ -419,3 +426,29 @@ of a certain type. "Educational Credential Marketplace".
 - Do we want to define that VCs.  
 - Marketplace maintains a queryable snapshot of that graph.  
 - Root of Trust (total trust), Self Issued (no trust), Reputation System (continuous)
+
+## Meeting Notes 4/13/2021
+
+### IIW Presentation
+- Discuss Issuer relationship model (see previous section)
+- Presentation team: Martin, Ravikant, (if needed) Stepan
+- https://internetidentityworkshop.com/schedule/ (Apr 20-22)
+
+### Refining Query Properties
+- How do we effectively query mutliple credentials?
+  - They are linked by the issuer process defined in the Credential Manifest
+- What should be the response of the Marketplace?
+  - Ordered list of matches
+    - Who controls the ordering? Should be users ultimately in charge
+  - Individual Match:
+    - Issuer metadata (location, reputation, etc.)
+    - Credential metadata (price, type, etc.)
+
+- Open question: do we need to specify issuance process? if so, is it only Presentation Def. or also offline / not VC-based process as well?
+
+### VC Marketplace business models
+- Credential Issuance: one-time payment ($: H -> I)
+- Credential Presentation: per use payment ($: V -> I)
+- Credential Presentation: holder has VC, how can she monetize it? ($: V -> H)
+  - who is getting paid in this last case (subject or holder)?
+  - how is price negotiation happening (p2p, thru marketplace)?
