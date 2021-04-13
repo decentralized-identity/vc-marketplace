@@ -55,6 +55,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <dl>
 <dt><strong>Editors:</strong></dt>
 <dd><a path-0="www.linkedin.com"path-1="in"path-2="rado0x54"path-3=""href="https://www.linkedin.com/in/rado0x54/" >Martin Riedel</a> (Consensys Mesh)</dd>
+<dd><a path-0="www.linkedin.com"path-1="in"path-2="sgershuni"path-3=""href="https://www.linkedin.com/in/sgershuni/" >Stepan Gershuni</a> (Affinidi)</dd>
 </dl>
 <p><strong>Contributors:</strong></p>
 <dl>
@@ -94,8 +95,58 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 </div>
 <h3 id="buying-a-piece-of-art-in-switzerland"><a class="toc-anchor" href="#buying-a-piece-of-art-in-switzerland" >§</a> Buying a Piece of Art in Switzerland</h3>
 <h4 id="personas-2"><a class="toc-anchor" href="#personas-2" >§</a> Personas</h4>
+<dl>
+<dt><span id="term:vc-marketplace">VC Marketplace</span>:</dt>
+<dd>See Abstract.</dd>
+<dt><span id="term:gallery">Gallery</span>:</dt>
+<dd>Art Gallery with expensive artwork for sale, seller. Required to ask for AML report by law when large sells are made.</dd>
+<dt><span id="term:buyer">Buyer</span>:</dt>
+<dd>A person willing to buy an expensive piece of art.</dd>
+<dt><span id="term:aml-provider">AML provider</span>:</dt>
+<dd>An agency providing digital AML reports.</dd>
+</dl>
 <h4 id="description-2"><a class="toc-anchor" href="#description-2" >§</a> Description</h4>
+<p>The use cases provides an example of a workflow where Issuer and Verifier are not aware of each other and in the same time they are willing to get into commercial relationships. This use case describes how VC Marketplace can solve a problem of finding an AML provider and presenting an AML report when making a large purchase. Holder gets the benefit of convinience of making a large purchase; Verifier is able to provide better experience for thier customers and Issuer is able to get a new distribution channel.</p>
 <h4 id="sequence-diagram-2"><a class="toc-anchor" href="#sequence-diagram-2" >§</a> Sequence Diagram</h4>
+<div class="mermaid">
+sequenceDiagram
+    participant G as Gallery
+    participant B as Buyer
+    participant M as VC Marketplace
+    participant A as AML Provider
+    note over G: Art Gallery with expensive artwork for sale, seller
+    note over B: A person willing to buy an expensive piece of art
+    note over A: An agency providing digital AML reports
+    opt Initialization
+      A->>A: Self-Publish Manifest, containin description, pricing and schemas of the possible AML reports 
+      G->>G: Self-Publish Presentation Definition and requirements for AML documents
+      B->>G: Chooses an artwork, negotiates deal
+      G->>B: Request for AML report
+      note over B, G: Can be in a form of QR code or link that returns accpeted issuers from VC Marketplace
+    end
+    opt Discovery
+      B->>M: Looks for AML report providers (issuers) that satisfy requirements
+      M->>B: Responds with the list of AML providers (issuers)
+      note over M, B: Can be sorted by price, reputation, etc.
+      note over M, B: Also includes data required for the issuer to issue VC
+    end
+    opt Transaction
+      B->>A: Provide necessary data to get VC
+      A->>A: Compiles report
+      A->>B: Issues report in a form of VC
+      A->>M: Records proof of issuance
+      B->>G: Presents report. Completes transaction
+      B->>M: (optionally) Confirms transaction
+      M->>G: Charges for the report + referral fee
+      M->>A: Payment for successfully issued and used VC
+    end
+    opt Re-use
+      B->>B: Reuses the AML VC with other verifier
+      note right of B: E.g. Opening a bank account, making another large purchase
+      B->>M: Reports re-use
+      M->>A: Subsequent payment for the re-use (if Verifier B is also registered with the marketplace)
+    end
+</div>
 <h3 id="using-employment-credentials-to-get-a-loan-rent-a-house"><a class="toc-anchor" href="#using-employment-credentials-to-get-a-loan-rent-a-house" >§</a> Using Employment Credentials to Get a Loan, Rent a House</h3>
 <h4 id="personas-3"><a class="toc-anchor" href="#personas-3" >§</a> Personas</h4>
 <h4 id="description-3"><a class="toc-anchor" href="#description-3" >§</a> Description</h4>
@@ -442,7 +493,7 @@ entity.</li>
 </li>
 </ul>
 </li>
-<li>Issuer:
+<li>Issuer
 <ul>
 <li>by Identifier (unique)</li>
 <li>by Reputation</li>
@@ -452,6 +503,23 @@ entity.</li>
 <ul>
 <li>Issuers expose “trusted relationships” by VC (Issuer A trust Issuer B)</li>
 <li>“find all the issuers that are authorized by the DHS”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Issuing Process (what’s needed to receive the VC)
+<ul>
+<li>Presentation Defnition</li>
+</ul>
+</li>
+<li>Marketplace parameters
+<ul>
+<li>Ordering of the response
+<ul>
+<li>Price</li>
+<li>Issuer / verifier reputation</li>
+<li>Jurisdiction / compliance rules</li>
+<li>Trust Graph</li>
 </ul>
 </li>
 </ul>
@@ -485,6 +553,52 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li>Do we want to define that VCs.</li>
 <li>Marketplace maintains a queryable snapshot of that graph.</li>
 <li>Root of Trust (total trust), Self Issued (no trust), Reputation System (continuous)</li>
+</ul>
+<h2 id="meeting-notes-4132021"><a class="toc-anchor" href="#meeting-notes-4132021" >§</a> Meeting Notes 4/13/2021</h2>
+<h3 id="iiw-presentation"><a class="toc-anchor" href="#iiw-presentation" >§</a> IIW Presentation</h3>
+<ul>
+<li>Discuss Issuer relationship model (see previous section)</li>
+<li>Presentation team: Martin, Ravikant, (if needed) Stepan</li>
+<li><a path-0="internetidentityworkshop.com"path-1="schedule"path-2=""href="https://internetidentityworkshop.com/schedule/" ><span>https://internetidentityworkshop.com/schedule/</span></a> (Apr 20-22)</li>
+</ul>
+<h3 id="refining-query-properties"><a class="toc-anchor" href="#refining-query-properties" >§</a> Refining Query Properties</h3>
+<ul>
+<li>
+<p>How do we effectively query mutliple credentials?</p>
+<ul>
+<li>They are linked by the issuer process defined in the Credential Manifest</li>
+</ul>
+</li>
+<li>
+<p>What should be the response of the Marketplace?</p>
+<ul>
+<li>Ordered list of matches
+<ul>
+<li>Who controls the ordering? Should be users ultimately in charge</li>
+</ul>
+</li>
+<li>Individual Match:
+<ul>
+<li>Issuer metadata (location, reputation, etc.)</li>
+<li>Credential metadata (price, type, etc.)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Open question: do we need to specify issuance process? if so, is it only Presentation Def. or also offline / not VC-based process as well?</p>
+</li>
+</ul>
+<h3 id="vc-marketplace-business-models"><a class="toc-anchor" href="#vc-marketplace-business-models" >§</a> VC Marketplace business models</h3>
+<ul>
+<li>Credential Issuance: one-time payment ($: H -&gt; I)</li>
+<li>Credential Presentation: per use payment ($: V -&gt; I)</li>
+<li>Credential Presentation: holder has VC, how can she monetize it? ($: V -&gt; H)
+<ul>
+<li>who is getting paid in this last case (subject or holder)?</li>
+<li>how is price negotiation happening (p2p, thru marketplace)?</li>
+</ul>
+</li>
 </ul>
 
                     </article>    
@@ -611,6 +725,13 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#examples" >Examples</a></li>
 <li><a href="#question" >Question</a></li>
 <li><a href="#note" >Note</a></li>
+</ul>
+</li>
+<li><a href="#meeting-notes-4132021" >Meeting Notes 4/13/2021</a>
+<ul>
+<li><a href="#iiw-presentation" >IIW Presentation</a></li>
+<li><a href="#refining-query-properties" >Refining Query Properties</a></li>
+<li><a href="#vc-marketplace-business-models" >VC Marketplace business models</a></li>
 </ul>
 </li>
 </ul>
