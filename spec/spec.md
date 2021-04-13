@@ -8,6 +8,7 @@ Verifiable Credentials (VC) Marketplace Interfaces
 <!-- -->
 **Editors:**
 ~ [Martin Riedel](https://www.linkedin.com/in/rado0x54/) (Consensys Mesh)
+~ [Stepan Gershuni](https://www.linkedin.com/in/sgershuni/) (Affinidi)
 
 **Contributors:**
 
@@ -50,9 +51,61 @@ Add Sequence Diagram for UC.
 
 ### Buying a Piece of Art in Switzerland
 #### Personas
-#### Description
-#### Sequence Diagram
+[[def: VC Marketplace]]:
+~ See Abstract.
 
+[[def: Gallery]]:
+~ Art Gallery with expensive artwork for sale, seller. Required to ask for AML report by law when large sells are made.
+
+[[def: Buyer]]:
+~ A person willing to buy an expensive piece of art.
+
+[[def: AML provider]]:
+~ An agency providing digital AML reports.
+#### Description
+The use cases provides an example of a workflow where Issuer and Verifier are not aware of each other and in the same time they are willing to get into commercial relationships. This use case describes how VC Marketplace can solve a problem of finding an AML provider and presenting an AML report when making a large purchase. Holder gets the benefit of convinience of making a large purchase; Verifier is able to provide better experience for thier customers and Issuer is able to get a new distribution channel.
+
+#### Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant G as Gallery
+    participant B as Buyer
+    participant M as VC Marketplace
+    participant A as AML Provider
+    note over G: Art Gallery with expensive artwork for sale, seller
+    note over B: A person willing to buy an expensive piece of art
+    note over A: An agency providing digital AML reports
+    opt Initialization
+      A->>A: Self-Publish Manifest, containin description, pricing and schemas of the possible AML reports 
+      G->>G: Self-Publish Presentation Definition and requirements for AML documents
+      B->>G: Chooses an artwork, negotiates deal
+      G->>B: Request for AML report
+      note over B, G: Can be in a form of QR code or link that returns accpeted issuers from VC Marketplace
+    end
+    opt Discovery
+      B->>M: Looks for AML report providers (issuers) that satisfy requirements
+      M->>B: Responds with the list of AML providers (issuers)
+      note over M, B: Can be sorted by price, reputation, etc.
+      note over M, B: Also includes data required for the issuer to issue VC
+    end
+    opt Transaction
+      B->>A: Provide necessary data to get VC
+      A->>A: Compiles report
+      A->>B: Issues report in a form of VC
+      A->>M: Records proof of issuance
+      B->>G: Presents report. Completes transaction
+      B->>M: (optionally) Confirms transaction
+      M->>G: Charges for the report + referral fee
+      M->>A: Payment for successfully issued and used VC
+    end
+    opt Re-use
+      B->>B: Reuses the AML VC with other verifier
+      note right of B: E.g. Opening a bank account, making another large purchase
+      B->>M: Reports re-use
+      M->>A: Subsequent payment for the re-use (if Verifier B is also registered with the marketplace)
+    end
+
+```
 
 ### Using Employment Credentials to Get a Loan, Rent a House
 #### Personas
