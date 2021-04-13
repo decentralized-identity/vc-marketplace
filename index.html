@@ -68,30 +68,114 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <hr>
 <p>Work in copy of <a path-0="Hack.md"href="http://Hack.md" ><span>Hack.md</span></a></p>
 <h2 id="marketplace-use-cases"><a class="toc-anchor" href="#marketplace-use-cases" >§</a> Marketplace Use Cases</h2>
-<h3 id="payment-motivated-uc"><a class="toc-anchor" href="#payment-motivated-uc" >§</a> Payment-motivated UC</h3>
+<h3 id="traditional-kycaml-verification-provider"><a class="toc-anchor" href="#traditional-kycaml-verification-provider" >§</a> Traditional KYC/AML Verification Provider</h3>
+<h4 id="personas"><a class="toc-anchor" href="#personas" >§</a> Personas</h4>
+<ul>
+<li><strong>Traditional KYC/AML Provider</strong> that provides Online Verification Services for Service Providers that have to adhere to regulartory requirements.</li>
+<li><strong>Holder/Subject</strong> of the Credential AND <strong>User</strong> (of the Service Provider)</li>
+<li><strong>Service Provider</strong> offering an Online Service to its users.</li>
+</ul>
+<h4 id="description"><a class="toc-anchor" href="#description" >§</a> Description</h4>
+<ul>
+<li>As an online KYC provider I want to be able to offer my verification service transparently online to Service Providers who require KYCed customers, as well as user directly in order to increase the service usage.</li>
+<li>Technically KYC Credentials can be REUSED until revoked.</li>
+<li>As a KYC Provider I want to be reimbursed for reoccuring usage AND/OR a one-time issuing fee. The one-time issuing fee can be set against the serivce provider redirecting the user to the KYC service OR the user directly.</li>
+<li>As a KYC Provider I want to be able to set a transparent cost basis for the recurring AND/OR one time issuing fee.</li>
+<li>SPECIAL REQUIREMENT: As a service provider I want to be able to have special offers / contracts with service providers that consume my issued credentials.
+<ul>
+<li>Ideally these “special” conditions are not visible to the general public.</li>
+<li>E.g. special offers could be models as a “Payback” mechansim outside of the VC Marketplace.</li>
+</ul>
+</li>
+<li>As a KYC Provider I want to be able to charge for User or Service Provider initated credential revocation (Is that a good motivation?)</li>
+</ul>
+<h4 id="sequence-diagram"><a class="toc-anchor" href="#sequence-diagram" >§</a> Sequence Diagram</h4>
+<div id="really-important" class="notice todo"><a class="notice-link" href="#really-important">TODO</a><p>Add Sequence Diagram for UC.</p>
+</div>
+<h3 id="buying-a-piece-of-art-in-switzerland"><a class="toc-anchor" href="#buying-a-piece-of-art-in-switzerland" >§</a> Buying a Piece of Art in Switzerland</h3>
+<h4 id="personas-2"><a class="toc-anchor" href="#personas-2" >§</a> Personas</h4>
+<h4 id="description-2"><a class="toc-anchor" href="#description-2" >§</a> Description</h4>
+<h4 id="sequence-diagram-2"><a class="toc-anchor" href="#sequence-diagram-2" >§</a> Sequence Diagram</h4>
+<h3 id="using-employment-credentials-to-get-a-loan-rent-a-house"><a class="toc-anchor" href="#using-employment-credentials-to-get-a-loan-rent-a-house" >§</a> Using Employment Credentials to Get a Loan, Rent a House</h3>
+<h4 id="personas-3"><a class="toc-anchor" href="#personas-3" >§</a> Personas</h4>
+<h4 id="description-3"><a class="toc-anchor" href="#description-3" >§</a> Description</h4>
+<h4 id="sequence-diagram-3"><a class="toc-anchor" href="#sequence-diagram-3" >§</a> Sequence Diagram</h4>
+<h3 id="requesting-an-age-gated-product-at-a-vending-machine"><a class="toc-anchor" href="#requesting-an-age-gated-product-at-a-vending-machine" >§</a> Requesting an age-gated product at a vending machine</h3>
+<h4 id="personas-4"><a class="toc-anchor" href="#personas-4" >§</a> Personas</h4>
+<h4 id="description-4"><a class="toc-anchor" href="#description-4" >§</a> Description</h4>
+<h4 id="sequence-diagram-4"><a class="toc-anchor" href="#sequence-diagram-4" >§</a> Sequence Diagram</h4>
+<h3 id="requesting-a-university-transcript"><a class="toc-anchor" href="#requesting-a-university-transcript" >§</a> Requesting a university transcript</h3>
+<h4 id="personas-5"><a class="toc-anchor" href="#personas-5" >§</a> Personas</h4>
+<h4 id="description-5"><a class="toc-anchor" href="#description-5" >§</a> Description</h4>
+<h4 id="sequence-diagram-5"><a class="toc-anchor" href="#sequence-diagram-5" >§</a> Sequence Diagram</h4>
+<h3 id="discover-credential-manifest-by-web-crawling"><a class="toc-anchor" href="#discover-credential-manifest-by-web-crawling" >§</a> Discover credential manifest by (web-)crawling</h3>
+<h4 id="personas-6"><a class="toc-anchor" href="#personas-6" >§</a> Personas</h4>
+<dl>
+<dt><span id="term:educational-degree-issuer"><span id="term:university">University</span></span>:</dt>
+<dd>The University is a federally acknowledged institution that is able to issue educational degrees to its students.</dd>
+<dt><span id="term:transcript-credential-subject-and-holder"><span id="term:student">Student</span></span>:</dt>
+<dd>The (former) Student attends or has attended a University and is able to receive a Transcript Credential from the University. Students are also the main Holders of their own educational credentials.
+As part of this Use Case the Student is also the Subject of a “National ID Card”</dd>
+<dt><span id="term:vc-marketplace">VC Marketplace</span>:</dt>
+<dd>See Abstract.</dd>
+<dt><span id="term:government">Government</span>:</dt>
+<dd>A national government capable of issuing “National ID Card” credentials to its citizens and permanent residents.</dd>
+</dl>
+<h4 id="description-6"><a class="toc-anchor" href="#description-6" >§</a> Description</h4>
+<p>This Use-Cases mirrors the Behavior of “Requesting a university transcript” but with initial “Manifest Discovery”
+via web-crawling and not by active registration.s</p>
+<h4 id="sequence-diagram-6"><a class="toc-anchor" href="#sequence-diagram-6" >§</a> Sequence Diagram</h4>
+<div class="mermaid">
+sequenceDiagram
+    participant U as University
+    participant S as Student
+    participant M as VC Marketplace
+    participant G as Government
+    note over U: A university capable of issuing "transcript" credentials
+    note over G: A national government capable of issuing "National ID Card" credentials
+    note over S: A former student of the university requesting a formal transcript credential
+    opt Before
+      G->>G: Self-Publish IdDocument {Country = Germany} Manifest
+      U->>U: Self-Publish Transcript {University = XYZ}
+      M->>G: Discover Manifest by (web-)crawling
+      M->>U: Discover Manifest by (web-)crawling
+    end
+    S->>M: Lookup
+    note over S,M: Credential = Transcript
+    note over S,M: Constraint = University = XYZ
+    M->>S: :[University DID]
+    S->>U: Request Transcript
+    opt
+      U->>S: Request country
+      S->>U: :country = Germany
+    end
+    U->>S: Request IdDocument credential {country = Germany}
+    S->>M: Lookup
+    note over S,M: Credential = IdDocument
+    note over S,M: Constraint = Country = Germany
+    M->>S: :[Government DID]
+    S->>G: Request IdDocument
+    G->>G: ...Validate identity
+    G->>S: :IdDocument Credential
+    S->>U: :IdDocument Credential
+    U->>S: :Transcript Credential
+</div>
+<h3 id="payment-motivated-use-case"><a class="toc-anchor" href="#payment-motivated-use-case" >§</a> Payment-motivated Use Case</h3>
+<div id="really-important-1" class="notice todo"><a class="notice-link" href="#really-important-1">TODO</a><p>Add UC</p>
 <ul>
 <li>Payment during issuance</li>
 <li>Payment during presentation</li>
 </ul>
-<h3 id="buying-art-at-a-swiss-auction"><a class="toc-anchor" href="#buying-art-at-a-swiss-auction" >§</a> Buying art at a swiss auction.</h3>
-<p>Swimlanes.</p>
-<h3 id="beibehaltungsgenehmigung-and-citizenship"><a class="toc-anchor" href="#beibehaltungsgenehmigung-and-citizenship" >§</a> Beibehaltungsgenehmigung and Citizenship</h3>
-<p>TODO @Martin: Add example for Beibehaltungsgenehmigung.</p>
-<h3 id="credential-discovery-by-webcrawling"><a class="toc-anchor" href="#credential-discovery-by-webcrawling" >§</a> Credential Discovery by Webcrawling</h3>
-<p>Sequence Diagram example:</p>
-<div class="mermaid">
-sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
-    end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
 </div>
+<h4 id="personas-7"><a class="toc-anchor" href="#personas-7" >§</a> Personas</h4>
+<h4 id="description-7"><a class="toc-anchor" href="#description-7" >§</a> Description</h4>
+<h4 id="sequence-diagram-7"><a class="toc-anchor" href="#sequence-diagram-7" >§</a> Sequence Diagram</h4>
+<h3 id="beibehaltungsgenehmigung-and-citizenship"><a class="toc-anchor" href="#beibehaltungsgenehmigung-and-citizenship" >§</a> Beibehaltungsgenehmigung and Citizenship</h3>
+<div id="really-important-2" class="notice todo"><a class="notice-link" href="#really-important-2">TODO</a><p>TODO @Martin: Add example for Beibehaltungsgenehmigung.</p>
+</div>
+<h4 id="personas-8"><a class="toc-anchor" href="#personas-8" >§</a> Personas</h4>
+<h4 id="description-8"><a class="toc-anchor" href="#description-8" >§</a> Description</h4>
+<h4 id="sequence-diagram-8"><a class="toc-anchor" href="#sequence-diagram-8" >§</a> Sequence Diagram</h4>
 <h2 id="proposed-generalized-interface-marketplace-definitions"><a class="toc-anchor" href="#proposed-generalized-interface-marketplace-definitions" >§</a> Proposed Generalized (Interface) Marketplace Definitions</h2>
 <h3 id="issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many"><a class="toc-anchor" href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >§</a> Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</h3>
 <ul>
@@ -429,10 +513,62 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#abstract" >Abstract</a></li>
 <li><a href="#marketplace-use-cases" >Marketplace Use Cases</a>
 <ul>
-<li><a href="#payment-motivated-uc" >Payment-motivated UC</a></li>
-<li><a href="#buying-art-at-a-swiss-auction" >Buying art at a swiss auction.</a></li>
-<li><a href="#beibehaltungsgenehmigung-and-citizenship" >Beibehaltungsgenehmigung and Citizenship</a></li>
-<li><a href="#credential-discovery-by-webcrawling" >Credential Discovery by Webcrawling</a></li>
+<li><a href="#traditional-kycaml-verification-provider" >Traditional KYC/AML Verification Provider</a>
+<ul>
+<li><a href="#personas" >Personas</a></li>
+<li><a href="#description" >Description</a></li>
+<li><a href="#sequence-diagram" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#buying-a-piece-of-art-in-switzerland" >Buying a Piece of Art in Switzerland</a>
+<ul>
+<li><a href="#personas-2" >Personas</a></li>
+<li><a href="#description-2" >Description</a></li>
+<li><a href="#sequence-diagram-2" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#using-employment-credentials-to-get-a-loan-rent-a-house" >Using Employment Credentials to Get a Loan, Rent a House</a>
+<ul>
+<li><a href="#personas-3" >Personas</a></li>
+<li><a href="#description-3" >Description</a></li>
+<li><a href="#sequence-diagram-3" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#requesting-an-age-gated-product-at-a-vending-machine" >Requesting an age-gated product at a vending machine</a>
+<ul>
+<li><a href="#personas-4" >Personas</a></li>
+<li><a href="#description-4" >Description</a></li>
+<li><a href="#sequence-diagram-4" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#requesting-a-university-transcript" >Requesting a university transcript</a>
+<ul>
+<li><a href="#personas-5" >Personas</a></li>
+<li><a href="#description-5" >Description</a></li>
+<li><a href="#sequence-diagram-5" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#discover-credential-manifest-by-web-crawling" >Discover credential manifest by (web-)crawling</a>
+<ul>
+<li><a href="#personas-6" >Personas</a></li>
+<li><a href="#description-6" >Description</a></li>
+<li><a href="#sequence-diagram-6" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#payment-motivated-use-case" >Payment-motivated Use Case</a>
+<ul>
+<li><a href="#personas-7" >Personas</a></li>
+<li><a href="#description-7" >Description</a></li>
+<li><a href="#sequence-diagram-7" >Sequence Diagram</a></li>
+</ul>
+</li>
+<li><a href="#beibehaltungsgenehmigung-and-citizenship" >Beibehaltungsgenehmigung and Citizenship</a>
+<ul>
+<li><a href="#personas-8" >Personas</a></li>
+<li><a href="#description-8" >Description</a></li>
+<li><a href="#sequence-diagram-8" >Sequence Diagram</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li><a href="#proposed-generalized-interface-marketplace-definitions" >Proposed Generalized (Interface) Marketplace Definitions</a>

@@ -26,31 +26,128 @@ Work in copy of Hack.md
 
 ## Marketplace Use Cases
 
-### Payment-motivated UC
-- Payment during issuance
-- Payment during presentation
+### Traditional KYC/AML Verification Provider
 
-### Buying art at a swiss auction.
-Swimlanes.
+#### Personas
+- **Traditional KYC/AML Provider** that provides Online Verification Services for Service Providers that have to adhere to regulartory requirements.
+- **Holder/Subject** of the Credential AND **User** (of the Service Provider)
+- **Service Provider** offering an Online Service to its users.
 
-### Beibehaltungsgenehmigung and Citizenship
-TODO @Martin: Add example for Beibehaltungsgenehmigung.
+#### Description
+- As an online KYC provider I want to be able to offer my verification service transparently online to Service Providers who require KYCed customers, as well as user directly in order to increase the service usage.
+- Technically KYC Credentials can be REUSED until revoked.
+- As a KYC Provider I want to be reimbursed for reoccuring usage AND/OR a one-time issuing fee. The one-time issuing fee can be set against the serivce provider redirecting the user to the KYC service OR the user directly.
+- As a KYC Provider I want to be able to set a transparent cost basis for the recurring AND/OR one time issuing fee.
+- SPECIAL REQUIREMENT: As a service provider I want to be able to have special offers / contracts with service providers that consume my issued credentials.
+  - Ideally these "special" conditions are not visible to the general public.
+  - E.g. special offers could be models as a "Payback" mechansim outside of the VC Marketplace.
+- As a KYC Provider I want to be able to charge for User or Service Provider initated credential revocation (Is that a good motivation?)
 
-### Credential Discovery by Webcrawling
-Sequence Diagram example:
+#### Sequence Diagram
+::: todo Really Important
+Add Sequence Diagram for UC.
+:::
+
+### Buying a Piece of Art in Switzerland
+#### Personas
+#### Description
+#### Sequence Diagram
+
+
+### Using Employment Credentials to Get a Loan, Rent a House
+#### Personas
+#### Description
+#### Sequence Diagram
+
+
+### Requesting an age-gated product at a vending machine
+#### Personas
+#### Description
+#### Sequence Diagram
+
+
+### Requesting a university transcript
+#### Personas
+#### Description
+#### Sequence Diagram
+
+
+### Discover credential manifest by (web-)crawling
+#### Personas
+[[def: University, Educational Degree Issuer]]:
+~ The University is a federally acknowledged institution that is able to issue educational degrees to its students.
+
+[[def: Student, Transcript Credential Subject and Holder]]:
+~ The (former) Student attends or has attended a University and is able to receive a Transcript Credential from the University. Students are also the main Holders of their own educational credentials.
+As part of this Use Case the Student is also the Subject of a "National ID Card"
+
+[[def: VC Marketplace]]:
+~ See Abstract.
+
+[[def: Government]]:
+~ A national government capable of issuing "National ID Card" credentials to its citizens and permanent residents.
+
+#### Description
+This Use-Cases mirrors the Behavior of "Requesting a university transcript" but with initial "Manifest Discovery"
+via web-crawling and not by active registration.s
+
+#### Sequence Diagram
 ```mermaid
 sequenceDiagram
-    participant Alice
-    participant Bob
-    Alice->>John: Hello John, how are you?
-    loop Healthcheck
-        John->>John: Fight against hypochondria
+    participant U as University
+    participant S as Student
+    participant M as VC Marketplace
+    participant G as Government
+    note over U: A university capable of issuing "transcript" credentials
+    note over G: A national government capable of issuing "National ID Card" credentials
+    note over S: A former student of the university requesting a formal transcript credential
+    opt Before
+      G->>G: Self-Publish IdDocument {Country = Germany} Manifest
+      U->>U: Self-Publish Transcript {University = XYZ}
+      M->>G: Discover Manifest by (web-)crawling
+      M->>U: Discover Manifest by (web-)crawling
     end
-    Note right of John: Rational thoughts <br/>prevail!
-    John-->>Alice: Great!
-    John->>Bob: How about you?
-    Bob-->>John: Jolly good!
+    S->>M: Lookup
+    note over S,M: Credential = Transcript
+    note over S,M: Constraint = University = XYZ
+    M->>S: :[University DID]
+    S->>U: Request Transcript
+    opt
+      U->>S: Request country
+      S->>U: :country = Germany
+    end
+    U->>S: Request IdDocument credential {country = Germany}
+    S->>M: Lookup
+    note over S,M: Credential = IdDocument
+    note over S,M: Constraint = Country = Germany
+    M->>S: :[Government DID]
+    S->>G: Request IdDocument
+    G->>G: ...Validate identity
+    G->>S: :IdDocument Credential
+    S->>U: :IdDocument Credential
+    U->>S: :Transcript Credential
+    
 ```
+
+
+### Payment-motivated Use Case
+::: todo Really Important
+Add UC
+- Payment during issuance
+- Payment during presentation
+:::
+#### Personas
+#### Description
+#### Sequence Diagram
+
+### Beibehaltungsgenehmigung and Citizenship
+::: todo Really Important
+TODO @Martin: Add example for Beibehaltungsgenehmigung.
+  :::
+#### Personas
+#### Description
+#### Sequence Diagram
+
 
 ## Proposed Generalized (Interface) Marketplace Definitions
 
