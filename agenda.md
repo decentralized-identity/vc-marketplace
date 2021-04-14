@@ -1,6 +1,6 @@
 # Claims & Credentials WG - Verifiable Credentials Marketplace work item -  rolling agenda & minutes
 
-[![hackmd-github-sync-badge](https://hackmd.io/s9IoKZMUR8ieEwyiztvJjw/badge)](https://hackmd.io/s9IoKZMUR8ieEwyiztvJjw)
+[![hackmd-github-sync-badge](https://hackmd.io/w1MkaANEQKejEit1wM2EXA/badge)](https://hackmd.io/w1MkaANEQKejEit1wM2EXA)
 
 ## This is a Claims and Crednetials WG meeting. To contribute please join the C&C WG first. 
 
