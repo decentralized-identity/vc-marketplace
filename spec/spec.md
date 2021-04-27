@@ -34,6 +34,8 @@ Work in copy of Hack.md
 - **Holder/Subject** of the Credential AND **User** (of the Service Provider)
 - **Service Provider** offering an Online Service to its users.
 
+#### Persona Motivations
+
 #### Description
 - As an online KYC provider I want to be able to offer my verification service transparently online to Service Providers who require KYCed customers, as well as user directly in order to increase the service usage.
 - Technically KYC Credentials can be REUSED until revoked.
@@ -62,6 +64,9 @@ Add Sequence Diagram for UC.
 
 [[def: AML provider]]:
 ~ An agency providing digital AML reports.
+
+#### Persona Motivations
+
 #### Description
 The use cases provides an example of a workflow where Issuer and Verifier are not aware of each other and in the same time they are willing to get into commercial relationships. This use case describes how VC Marketplace can solve a problem of finding an AML provider and presenting an AML report when making a large purchase. Holder gets the benefit of convinience of making a large purchase; Verifier is able to provide better experience for thier customers and Issuer is able to get a new distribution channel.
 
@@ -109,18 +114,21 @@ sequenceDiagram
 
 ### Using Employment Credentials to Get a Loan, Rent a House
 #### Personas
+#### Persona Motivations
 #### Description
 #### Sequence Diagram
 
 
 ### Requesting an age-gated product at a vending machine
 #### Personas
+#### Persona Motivations
 #### Description
 #### Sequence Diagram
 
 
 ### Requesting a university transcript
 #### Personas
+#### Persona Motivations
 #### Description
 #### Sequence Diagram
 
@@ -139,6 +147,8 @@ As part of this Use Case the Student is also the Subject of a "National ID Card"
 
 [[def: Government]]:
 ~ A national government capable of issuing "National ID Card" credentials to its citizens and permanent residents.
+
+#### Persona Motivations
 
 #### Description
 This Use-Cases mirrors the Behavior of "Requesting a university transcript" but with initial "Manifest Discovery"
@@ -190,6 +200,7 @@ Add UC
 - Payment during presentation
 :::
 #### Personas
+#### Persona Motivations
 #### Description
 #### Sequence Diagram
 
@@ -198,23 +209,37 @@ Add UC
 TODO @Martin: Add example for Beibehaltungsgenehmigung.
   :::
 #### Personas
+#### Persona Motivations
 #### Description
 #### Sequence Diagram
 
 
-## Proposed Generalized (Interface) Marketplace Definitions
+## VC Marketplace Scope (e.g. specifically what is Out of Scope)
+
+
+## VC Marketplace Interface
+
+### INTERFACE NAME
+
+### INTERFACE DESCRIPTION
+
+### INTERFACE DATA (REQUEST)
+
+### INTERFACE DATA (RESPONSE)
+
+### INTERFACE CONSIDERATIONS
 
 ### Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)
 - A Marketplace is the collection of Issuer-based Credential Manifests
-- Issuer Metadata (incl. Reputation information)
+- Issuer Metadata (incl. Reputation information) (WHO!)
     - Issuer self-reported information
     - Collected through crawling
     - Attestations about the Issuer from 3rd parties
-- VC Type Metadata
+- VC Type Metadata (WHAT!)
     - what it's required for? (provided by Verifier)
     - where can get it? (provided by Issuer)
     - price
-- What "Issuing Processes" should a Credential Manifest Support
+- What "Issuing Processes" should a Credential Manifest Support (HOW!)
     - Presentation Definition (Requirements are known before, one-time request/response)
     - Other: "Manual": NYC DMV issues digital DL, but only by walking into an office.
     - Other: "Multi-Step" Workflow Verification Process (Delegate)
@@ -302,6 +327,7 @@ How does the VC Issuer Data stay up to date?
 
 ### Subject-initiated Issuer-Discovery
 Subject trying to discover a VC/Issuer (with certain matched constraints) that can be issued from an issuer?
+# TODO.
 
 ### Reputation
 - Reputation for all entities
@@ -321,25 +347,48 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
 - Can we enable Reputation system with only using VCs but not designing the whole reputation methodology?
 - Holder can issue their Reputation VC ad-hoc, compiling from data they already have
 
-### Track Credential Issuance (& Payment Coordination)
+### Reporting Credential Issuance (& Payment Coordination)
 - Transaction Record (Issuance)
 - Start of TX should be recorded (by Issuer)
 - Stop (Issuance) of TX should be recorded (Holder)
 
-### Track Credential Presentation (& Payment Coordination)
+### Reporting Credential Presentation (& Payment Coordination)
 - Transaction Record (Presentation)
 
-### Track Credential Revocation (& Payment Coordination)
+### Reporting Credential Revocation (& Payment Coordination)
 - Transaction Record (Revocation)
 
 ## Cross-sectional concerns
 
-## Marketplace Bootstrapping
+### Marketplace Bootstrapping
 - Initial Issuer-Vetting by Marketplace during Registration
 
-## Payment (Detail Section)
+### Governance
+
+### Reputation
+
+### Payment (Detail Section)
 - Payment is often controversial, however a egalitarian marketplace would be able to drive standardization of Credential Schema and Formats.
 - "Traffic" is hidden for general public, but accessible to participants
+- Payment "Direct": peer-2-peer Models
+- Payment "Indirect": Marketplace coordinatoes or anonomyses transfers. 
+
+### Funding / Incentivation
+- Discuss decentralized vs centralized funding models
+
+### Privacy
+- Centralized vs Decentralized.
+
+## Discussion & Next Steps
+- Not a blueprint f 
+
+## Appendix
+
+- Link to Governance Models
+- Link to other work
+-
+
+
 
 ## Discussion Points
 
@@ -452,3 +501,16 @@ of a certain type. "Educational Credential Marketplace".
 - Credential Presentation: holder has VC, how can she monetize it? ($: V -> H)
   - who is getting paid in this last case (subject or holder)?
   - how is price negotiation happening (p2p, thru marketplace)?
+
+## Meeting Notes 4/27/2021
+
+- Next Steps for this Group:
+  - Martin: Finish Specification with the unstructured content that was currently discussed
+  - Stepan: IIW32 has shown that Reputation is the big ask, but a useable model is still far out.
+  - Stepan: In a fully decentralized Marketplace implementation, the spec does not answer any Governance questions.
+  - Add "Appendix" to Marketplace around possible Governance models (Proof of Authority, Proof of Work, Staking, ...)
+    - Governance Model is abstracted behind "Controller DID", Control of that DID/Keys are implemented in a governance model.
+    - https://wiki.trustoverip.org/display/HOME/GSWG+Trust+Assurance+Task+Force
+  - Add "Appendix" to Marketplace around possible Trust / Reputation Models
+    - E.g. "Issuer Trust Graph" with Root of Trust, Whitelisting by Marketplace operator, Other Marketplace system. Externalic
+
