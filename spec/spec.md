@@ -65,8 +65,6 @@ Add Sequence Diagram for UC.
 [[def: AML provider]]:
 ~ An agency providing digital AML reports.
 
-#### Persona Motivations
-
 #### Description
 The use cases provides an example of a workflow where Issuer and Verifier are not aware of each other and in the same time they are willing to get into commercial relationships. This use case describes how VC Marketplace can solve a problem of finding an AML provider and presenting an AML report when making a large purchase. Holder gets the benefit of convinience of making a large purchase; Verifier is able to provide better experience for thier customers and Issuer is able to get a new distribution channel.
 
@@ -114,10 +112,66 @@ sequenceDiagram
 
 ### Using Employment Credentials to Get a Loan, Rent a House
 #### Personas
-#### Persona Motivations
-#### Description
-#### Sequence Diagram
+[[def: VC Marketplace]]:
+~ See Abstract.
 
+[[def: Bank]]:
+~ A verifier looking for proof of employment to open a bank account
+
+[[def: Employer]]:
+~ Issuer of the employment credential
+
+[[def: Worker]]:
+~ Holder looking to get different services (banking, housing) via the marketplace
+
+[[def: Landlord]]:
+~ A verifier looking for proof of employment of the future tenant.
+
+
+#### Description
+This use cases describes the potential use case of reusing the same employment VC to discover service providers and get different services from independent verifiers.
+
+#### Sequence Diagram
+```mermaid
+sequenceDiagram
+    participant E as Employer
+    participant B as Bank
+    participant M as VC Marketplace
+    participant L as Landlord
+    participant W as Worker
+    opt Initialization
+      B->>M: Publishes requirement for a loan application
+      L->>M: Publishes requirement for renting an apartment
+      E->>M: Publishes issuer metadata regarding type and structure of the VC that can be issued
+      note over E, M: Employer can reuse existing VC schema and type to reduce amount of work needed to prepare employment confirmation
+    end
+    opt Discovery
+      W->>M: Looks for banks that accept employment letters from the current employer
+      M->>W: Returns the list of banks that accept certain VC type for the application
+      W->>B: Chooses one bank, stats account opening process
+      note over W, B: Worker initializes communication with the service provider
+      W->>E: Request Employment Letter
+      E->>W: Issues proof of employment
+    end
+    opt Transaction
+      B->>W: Sends Presentation Definition
+      W->>B: Generates and sends Verifiable Presentation
+      B->>W: Opens a bank account
+      B->>M: Record of service rendered
+      B->>M: Payment of the referral fee
+      M->>E: Payment of royalty fee
+    end
+    opt Re-use
+      W->>M: Query for the landlords that accept Employment VC that Worker already has
+      M->>W: Responds with a list of landlords
+      W->>L: Chooses the landlord and starts renting application
+      L->>W: Sends Presentation Definition
+      W->>L: Generates and sends Verifiable Presentation
+      L->>W: Rents out the apartment
+      note over L, M: In this case no payment is associated with the issuance or sharing of the VC
+    end
+
+```
 
 ### Requesting an age-gated product at a vending machine
 #### Personas

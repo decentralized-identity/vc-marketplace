@@ -76,6 +76,7 @@ customElements.define("slide-panels",class extends HTMLElement{static get observ
 <li><strong>Holder/Subject</strong> of the Credential AND <strong>User</strong> (of the Service Provider)</li>
 <li><strong>Service Provider</strong> offering an Online Service to its users.</li>
 </ul>
+<h4 id="persona-motivations"><a class="toc-anchor" href="#persona-motivations" >§</a> Persona Motivations</h4>
 <h4 id="description"><a class="toc-anchor" href="#description" >§</a> Description</h4>
 <ul>
 <li>As an online KYC provider I want to be able to offer my verification service transparently online to Service Providers who require KYCed customers, as well as user directly in order to increase the service usage.</li>
@@ -149,14 +150,68 @@ sequenceDiagram
 </div>
 <h3 id="using-employment-credentials-to-get-a-loan-rent-a-house"><a class="toc-anchor" href="#using-employment-credentials-to-get-a-loan-rent-a-house" >§</a> Using Employment Credentials to Get a Loan, Rent a House</h3>
 <h4 id="personas-3"><a class="toc-anchor" href="#personas-3" >§</a> Personas</h4>
+<dl>
+<dt><span id="term:vc-marketplace">VC Marketplace</span>:</dt>
+<dd>See Abstract.</dd>
+<dt><span id="term:bank">Bank</span>:</dt>
+<dd>A verifier looking for proof of employment to open a bank account</dd>
+<dt><span id="term:employer">Employer</span>:</dt>
+<dd>Issuer of the employment credential</dd>
+<dt><span id="term:worker">Worker</span>:</dt>
+<dd>Holder looking to get different services (banking, housing) via the marketplace</dd>
+<dt><span id="term:landlord">Landlord</span>:</dt>
+<dd>A verifier looking for proof of employment of the future tenant.</dd>
+</dl>
 <h4 id="description-3"><a class="toc-anchor" href="#description-3" >§</a> Description</h4>
+<p>This use cases describes the potential use case of reusing the same employment VC to discover service providers and get different services from independent verifiers.</p>
 <h4 id="sequence-diagram-3"><a class="toc-anchor" href="#sequence-diagram-3" >§</a> Sequence Diagram</h4>
+<div class="mermaid">
+sequenceDiagram
+    participant E as Employer
+    participant B as Bank
+    participant M as VC Marketplace
+    participant L as Landlord
+    participant W as Worker
+    opt Initialization
+      B->>M: Publishes requirement for a loan application
+      L->>M: Publishes requirement for renting an apartment
+      E->>M: Publishes issuer metadata regarding type and structure of the VC that can be issued
+      note over E, M: Employer can reuse existing VC schema and type to reduce amount of work needed to prepare employment confirmation
+    end
+    opt Discovery
+      W->>M: Looks for banks that accept employment letters from the current employer
+      M->>W: Returns the list of banks that accept certain VC type for the application
+      W->>B: Chooses one bank, stats account opening process
+      note over W, B: Worker initializes communication with the service provider
+      W->>E: Request Employment Letter
+      E->>W: Issues proof of employment
+    end
+    opt Transaction
+      B->>W: Sends Presentation Definition
+      W->>B: Generates and sends Verifiable Presentation
+      B->>W: Opens a bank account
+      B->>M: Record of service rendered
+      B->>M: Payment of the referral fee
+      M->>E: Payment of royalty fee
+    end
+    opt Re-use
+      W->>M: Query for the landlords that accept Employment VC that Worker already has
+      M->>W: Responds with a list of landlords
+      W->>L: Chooses the landlord and starts renting application
+      L->>W: Sends Presentation Definition
+      W->>L: Generates and sends Verifiable Presentation
+      L->>W: Rents out the apartment
+      note over L, M: In this case no payment is associated with the issuance or sharing of the VC
+    end
+</div>
 <h3 id="requesting-an-age-gated-product-at-a-vending-machine"><a class="toc-anchor" href="#requesting-an-age-gated-product-at-a-vending-machine" >§</a> Requesting an age-gated product at a vending machine</h3>
 <h4 id="personas-4"><a class="toc-anchor" href="#personas-4" >§</a> Personas</h4>
+<h4 id="persona-motivations-2"><a class="toc-anchor" href="#persona-motivations-2" >§</a> Persona Motivations</h4>
 <h4 id="description-4"><a class="toc-anchor" href="#description-4" >§</a> Description</h4>
 <h4 id="sequence-diagram-4"><a class="toc-anchor" href="#sequence-diagram-4" >§</a> Sequence Diagram</h4>
 <h3 id="requesting-a-university-transcript"><a class="toc-anchor" href="#requesting-a-university-transcript" >§</a> Requesting a university transcript</h3>
 <h4 id="personas-5"><a class="toc-anchor" href="#personas-5" >§</a> Personas</h4>
+<h4 id="persona-motivations-3"><a class="toc-anchor" href="#persona-motivations-3" >§</a> Persona Motivations</h4>
 <h4 id="description-5"><a class="toc-anchor" href="#description-5" >§</a> Description</h4>
 <h4 id="sequence-diagram-5"><a class="toc-anchor" href="#sequence-diagram-5" >§</a> Sequence Diagram</h4>
 <h3 id="discover-credential-manifest-by-web-crawling"><a class="toc-anchor" href="#discover-credential-manifest-by-web-crawling" >§</a> Discover credential manifest by (web-)crawling</h3>
@@ -172,6 +227,7 @@ As part of this Use Case the Student is also the Subject of a “National ID Car
 <dt><span id="term:government">Government</span>:</dt>
 <dd>A national government capable of issuing “National ID Card” credentials to its citizens and permanent residents.</dd>
 </dl>
+<h4 id="persona-motivations-4"><a class="toc-anchor" href="#persona-motivations-4" >§</a> Persona Motivations</h4>
 <h4 id="description-6"><a class="toc-anchor" href="#description-6" >§</a> Description</h4>
 <p>This Use-Cases mirrors the Behavior of “Requesting a university transcript” but with initial “Manifest Discovery”
 via web-crawling and not by active registration.s</p>
@@ -219,33 +275,41 @@ sequenceDiagram
 </ul>
 </div>
 <h4 id="personas-7"><a class="toc-anchor" href="#personas-7" >§</a> Personas</h4>
+<h4 id="persona-motivations-5"><a class="toc-anchor" href="#persona-motivations-5" >§</a> Persona Motivations</h4>
 <h4 id="description-7"><a class="toc-anchor" href="#description-7" >§</a> Description</h4>
 <h4 id="sequence-diagram-7"><a class="toc-anchor" href="#sequence-diagram-7" >§</a> Sequence Diagram</h4>
 <h3 id="beibehaltungsgenehmigung-and-citizenship"><a class="toc-anchor" href="#beibehaltungsgenehmigung-and-citizenship" >§</a> Beibehaltungsgenehmigung and Citizenship</h3>
 <div id="really-important-2" class="notice todo"><a class="notice-link" href="#really-important-2">TODO</a><p>TODO @Martin: Add example for Beibehaltungsgenehmigung.</p>
 </div>
 <h4 id="personas-8"><a class="toc-anchor" href="#personas-8" >§</a> Personas</h4>
+<h4 id="persona-motivations-6"><a class="toc-anchor" href="#persona-motivations-6" >§</a> Persona Motivations</h4>
 <h4 id="description-8"><a class="toc-anchor" href="#description-8" >§</a> Description</h4>
 <h4 id="sequence-diagram-8"><a class="toc-anchor" href="#sequence-diagram-8" >§</a> Sequence Diagram</h4>
-<h2 id="proposed-generalized-interface-marketplace-definitions"><a class="toc-anchor" href="#proposed-generalized-interface-marketplace-definitions" >§</a> Proposed Generalized (Interface) Marketplace Definitions</h2>
+<h2 id="vc-marketplace-scope-eg-specifically-what-is-out-of-scope"><a class="toc-anchor" href="#vc-marketplace-scope-eg-specifically-what-is-out-of-scope" >§</a> VC Marketplace Scope (e.g. specifically what is Out of Scope)</h2>
+<h2 id="vc-marketplace-interface"><a class="toc-anchor" href="#vc-marketplace-interface" >§</a> VC Marketplace Interface</h2>
+<h3 id="interface-name"><a class="toc-anchor" href="#interface-name" >§</a> INTERFACE NAME</h3>
+<h3 id="interface-description"><a class="toc-anchor" href="#interface-description" >§</a> INTERFACE DESCRIPTION</h3>
+<h3 id="interface-data-request"><a class="toc-anchor" href="#interface-data-request" >§</a> INTERFACE DATA (REQUEST)</h3>
+<h3 id="interface-data-response"><a class="toc-anchor" href="#interface-data-response" >§</a> INTERFACE DATA (RESPONSE)</h3>
+<h3 id="interface-considerations"><a class="toc-anchor" href="#interface-considerations" >§</a> INTERFACE CONSIDERATIONS</h3>
 <h3 id="issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many"><a class="toc-anchor" href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >§</a> Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</h3>
 <ul>
 <li>A Marketplace is the collection of Issuer-based Credential Manifests</li>
-<li>Issuer Metadata (incl. Reputation information)
+<li>Issuer Metadata (incl. Reputation information) (WHO!)
 <ul>
 <li>Issuer self-reported information</li>
 <li>Collected through crawling</li>
 <li>Attestations about the Issuer from 3rd parties</li>
 </ul>
 </li>
-<li>VC Type Metadata
+<li>VC Type Metadata (WHAT!)
 <ul>
 <li>what it’s required for? (provided by Verifier)</li>
 <li>where can get it? (provided by Issuer)</li>
 <li>price</li>
 </ul>
 </li>
-<li>What “Issuing Processes” should a Credential Manifest Support
+<li>What “Issuing Processes” should a Credential Manifest Support (HOW!)
 <ul>
 <li>Presentation Definition (Requirements are known before, one-time request/response)</li>
 <li>Other: “Manual”: NYC DMV issues digital DL, but only by walking into an office.</li>
@@ -365,6 +429,7 @@ n:m</li>
 </ul>
 <h3 id="subject-initiated-issuer-discovery"><a class="toc-anchor" href="#subject-initiated-issuer-discovery" >§</a> Subject-initiated Issuer-Discovery</h3>
 <p>Subject trying to discover a VC/Issuer (with certain matched constraints) that can be issued from an issuer?</p>
+<h1 id="todo"><a class="toc-anchor" href="#todo" >§</a> TODO.</h1>
 <h3 id="reputation"><a class="toc-anchor" href="#reputation" >§</a> Reputation</h3>
 <ul>
 <li>Reputation for all entities</li>
@@ -386,29 +451,51 @@ n:m</li>
 <li>Can we enable Reputation system with only using VCs but not designing the whole reputation methodology?</li>
 <li>Holder can issue their Reputation VC ad-hoc, compiling from data they already have</li>
 </ul>
-<h3 id="track-credential-issuance-payment-coordination"><a class="toc-anchor" href="#track-credential-issuance-payment-coordination" >§</a> Track Credential Issuance (&amp; Payment Coordination)</h3>
+<h3 id="reporting-credential-issuance-payment-coordination"><a class="toc-anchor" href="#reporting-credential-issuance-payment-coordination" >§</a> Reporting Credential Issuance (&amp; Payment Coordination)</h3>
 <ul>
 <li>Transaction Record (Issuance)</li>
 <li>Start of TX should be recorded (by Issuer)</li>
 <li>Stop (Issuance) of TX should be recorded (Holder)</li>
 </ul>
-<h3 id="track-credential-presentation-payment-coordination"><a class="toc-anchor" href="#track-credential-presentation-payment-coordination" >§</a> Track Credential Presentation (&amp; Payment Coordination)</h3>
+<h3 id="reporting-credential-presentation-payment-coordination"><a class="toc-anchor" href="#reporting-credential-presentation-payment-coordination" >§</a> Reporting Credential Presentation (&amp; Payment Coordination)</h3>
 <ul>
 <li>Transaction Record (Presentation)</li>
 </ul>
-<h3 id="track-credential-revocation-payment-coordination"><a class="toc-anchor" href="#track-credential-revocation-payment-coordination" >§</a> Track Credential Revocation (&amp; Payment Coordination)</h3>
+<h3 id="reporting-credential-revocation-payment-coordination"><a class="toc-anchor" href="#reporting-credential-revocation-payment-coordination" >§</a> Reporting Credential Revocation (&amp; Payment Coordination)</h3>
 <ul>
 <li>Transaction Record (Revocation)</li>
 </ul>
 <h2 id="cross-sectional-concerns"><a class="toc-anchor" href="#cross-sectional-concerns" >§</a> Cross-sectional concerns</h2>
-<h2 id="marketplace-bootstrapping"><a class="toc-anchor" href="#marketplace-bootstrapping" >§</a> Marketplace Bootstrapping</h2>
+<h3 id="marketplace-bootstrapping"><a class="toc-anchor" href="#marketplace-bootstrapping" >§</a> Marketplace Bootstrapping</h3>
 <ul>
 <li>Initial Issuer-Vetting by Marketplace during Registration</li>
 </ul>
-<h2 id="payment-detail-section"><a class="toc-anchor" href="#payment-detail-section" >§</a> Payment (Detail Section)</h2>
+<h3 id="governance"><a class="toc-anchor" href="#governance" >§</a> Governance</h3>
+<h3 id="reputation-2"><a class="toc-anchor" href="#reputation-2" >§</a> Reputation</h3>
+<h3 id="payment-detail-section"><a class="toc-anchor" href="#payment-detail-section" >§</a> Payment (Detail Section)</h3>
 <ul>
 <li>Payment is often controversial, however a egalitarian marketplace would be able to drive standardization of Credential Schema and Formats.</li>
 <li>“Traffic” is hidden for general public, but accessible to participants</li>
+<li>Payment “Direct”: peer-2-peer Models</li>
+<li>Payment “Indirect”: Marketplace coordinatoes or anonomyses transfers.</li>
+</ul>
+<h3 id="funding-incentivation"><a class="toc-anchor" href="#funding-incentivation" >§</a> Funding / Incentivation</h3>
+<ul>
+<li>Discuss decentralized vs centralized funding models</li>
+</ul>
+<h3 id="privacy"><a class="toc-anchor" href="#privacy" >§</a> Privacy</h3>
+<ul>
+<li>Centralized vs Decentralized.</li>
+</ul>
+<h2 id="discussion-next-steps"><a class="toc-anchor" href="#discussion-next-steps" >§</a> Discussion &amp; Next Steps</h2>
+<ul>
+<li>Not a blueprint f</li>
+</ul>
+<h2 id="appendix"><a class="toc-anchor" href="#appendix" >§</a> Appendix</h2>
+<ul>
+<li>Link to Governance Models</li>
+<li>Link to other work</li>
+<li></li>
 </ul>
 <h2 id="discussion-points"><a class="toc-anchor" href="#discussion-points" >§</a> Discussion Points</h2>
 <h3 id="open-discussion"><a class="toc-anchor" href="#open-discussion" >§</a> Open Discussion</h3>
@@ -600,6 +687,27 @@ of a certain type. “Educational Credential Marketplace”.</li>
 </ul>
 </li>
 </ul>
+<h2 id="meeting-notes-4272021"><a class="toc-anchor" href="#meeting-notes-4272021" >§</a> Meeting Notes 4/27/2021</h2>
+<ul>
+<li>Next Steps for this Group:
+<ul>
+<li>Martin: Finish Specification with the unstructured content that was currently discussed</li>
+<li>Stepan: IIW32 has shown that Reputation is the big ask, but a useable model is still far out.</li>
+<li>Stepan: In a fully decentralized Marketplace implementation, the spec does not answer any Governance questions.</li>
+<li>Add “Appendix” to Marketplace around possible Governance models (Proof of Authority, Proof of Work, Staking, …)
+<ul>
+<li>Governance Model is abstracted behind “Controller DID”, Control of that DID/Keys are implemented in a governance model.</li>
+<li><a path-0="wiki.trustoverip.org"path-1="display"path-2="HOME"path-3="GSWG+Trust+Assurance+Task+Force"href="https://wiki.trustoverip.org/display/HOME/GSWG+Trust+Assurance+Task+Force" ><span>https://wiki.trustoverip.org/display/HOME/GSWG+Trust+Assurance+Task+Force</span></a></li>
+</ul>
+</li>
+<li>Add “Appendix” to Marketplace around possible Trust / Reputation Models
+<ul>
+<li>E.g. “Issuer Trust Graph” with Root of Trust, Whitelisting by Marketplace operator, Other Marketplace system. Externalic</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 
                     </article>    
       
@@ -630,6 +738,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#traditional-kycaml-verification-provider" >Traditional KYC/AML Verification Provider</a>
 <ul>
 <li><a href="#personas" >Personas</a></li>
+<li><a href="#persona-motivations" >Persona Motivations</a></li>
 <li><a href="#description" >Description</a></li>
 <li><a href="#sequence-diagram" >Sequence Diagram</a></li>
 </ul>
@@ -651,6 +760,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#requesting-an-age-gated-product-at-a-vending-machine" >Requesting an age-gated product at a vending machine</a>
 <ul>
 <li><a href="#personas-4" >Personas</a></li>
+<li><a href="#persona-motivations-2" >Persona Motivations</a></li>
 <li><a href="#description-4" >Description</a></li>
 <li><a href="#sequence-diagram-4" >Sequence Diagram</a></li>
 </ul>
@@ -658,6 +768,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#requesting-a-university-transcript" >Requesting a university transcript</a>
 <ul>
 <li><a href="#personas-5" >Personas</a></li>
+<li><a href="#persona-motivations-3" >Persona Motivations</a></li>
 <li><a href="#description-5" >Description</a></li>
 <li><a href="#sequence-diagram-5" >Sequence Diagram</a></li>
 </ul>
@@ -665,6 +776,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#discover-credential-manifest-by-web-crawling" >Discover credential manifest by (web-)crawling</a>
 <ul>
 <li><a href="#personas-6" >Personas</a></li>
+<li><a href="#persona-motivations-4" >Persona Motivations</a></li>
 <li><a href="#description-6" >Description</a></li>
 <li><a href="#sequence-diagram-6" >Sequence Diagram</a></li>
 </ul>
@@ -672,6 +784,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#payment-motivated-use-case" >Payment-motivated Use Case</a>
 <ul>
 <li><a href="#personas-7" >Personas</a></li>
+<li><a href="#persona-motivations-5" >Persona Motivations</a></li>
 <li><a href="#description-7" >Description</a></li>
 <li><a href="#sequence-diagram-7" >Sequence Diagram</a></li>
 </ul>
@@ -679,14 +792,21 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#beibehaltungsgenehmigung-and-citizenship" >Beibehaltungsgenehmigung and Citizenship</a>
 <ul>
 <li><a href="#personas-8" >Personas</a></li>
+<li><a href="#persona-motivations-6" >Persona Motivations</a></li>
 <li><a href="#description-8" >Description</a></li>
 <li><a href="#sequence-diagram-8" >Sequence Diagram</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#proposed-generalized-interface-marketplace-definitions" >Proposed Generalized (Interface) Marketplace Definitions</a>
+<li><a href="#vc-marketplace-scope-eg-specifically-what-is-out-of-scope" >VC Marketplace Scope (e.g. specifically what is Out of Scope)</a></li>
+<li><a href="#vc-marketplace-interface" >VC Marketplace Interface</a>
 <ul>
+<li><a href="#interface-name" >INTERFACE NAME</a></li>
+<li><a href="#interface-description" >INTERFACE DESCRIPTION</a></li>
+<li><a href="#interface-data-request" >INTERFACE DATA (REQUEST)</a></li>
+<li><a href="#interface-data-response" >INTERFACE DATA (RESPONSE)</a></li>
+<li><a href="#interface-considerations" >INTERFACE CONSIDERATIONS</a></li>
 <li><a href="#issuer-vc-issuer-validation-process-capability-registration-todo-what-about-one-to-many" >Issuer: VC / Issuer Validation Process Capability Registration (TODO: What about one to many?)</a></li>
 <li><a href="#further-notes-issuer-registration" >Further Notes Issuer Registration</a>
 <ul>
@@ -700,14 +820,23 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#notes" >Notes:</a></li>
 </ul>
 </li>
-<li><a href="#track-credential-issuance-payment-coordination" >Track Credential Issuance (&amp; Payment Coordination)</a></li>
-<li><a href="#track-credential-presentation-payment-coordination" >Track Credential Presentation (&amp; Payment Coordination)</a></li>
-<li><a href="#track-credential-revocation-payment-coordination" >Track Credential Revocation (&amp; Payment Coordination)</a></li>
+<li><a href="#reporting-credential-issuance-payment-coordination" >Reporting Credential Issuance (&amp; Payment Coordination)</a></li>
+<li><a href="#reporting-credential-presentation-payment-coordination" >Reporting Credential Presentation (&amp; Payment Coordination)</a></li>
+<li><a href="#reporting-credential-revocation-payment-coordination" >Reporting Credential Revocation (&amp; Payment Coordination)</a></li>
 </ul>
 </li>
-<li><a href="#cross-sectional-concerns" >Cross-sectional concerns</a></li>
+<li><a href="#cross-sectional-concerns" >Cross-sectional concerns</a>
+<ul>
 <li><a href="#marketplace-bootstrapping" >Marketplace Bootstrapping</a></li>
+<li><a href="#governance" >Governance</a></li>
+<li><a href="#reputation-2" >Reputation</a></li>
 <li><a href="#payment-detail-section" >Payment (Detail Section)</a></li>
+<li><a href="#funding-incentivation" >Funding / Incentivation</a></li>
+<li><a href="#privacy" >Privacy</a></li>
+</ul>
+</li>
+<li><a href="#discussion-next-steps" >Discussion &amp; Next Steps</a></li>
+<li><a href="#appendix" >Appendix</a></li>
 <li><a href="#discussion-points" >Discussion Points</a>
 <ul>
 <li><a href="#open-discussion" >Open Discussion</a></li>
@@ -734,6 +863,7 @@ of a certain type. “Educational Credential Marketplace”.</li>
 <li><a href="#vc-marketplace-business-models" >VC Marketplace business models</a></li>
 </ul>
 </li>
+<li><a href="#meeting-notes-4272021" >Meeting Notes 4/27/2021</a></li>
 </ul>
 
                       </div>
