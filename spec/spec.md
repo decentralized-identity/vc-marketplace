@@ -416,10 +416,23 @@ Subject trying to discover a VC/Issuer (with certain matched constraints) that c
 
 ### Marketplace Bootstrapping
 - Initial Issuer-Vetting by Marketplace during Registration
+- SG: Not sure what this means, need some guidance
 
 ### Governance
+With the growth of adoption and therefore number of issuers and verifiers represented in the marketplace the need for standard governance practices and frameworks will increase. This specification does not aim to define a single governance framework for multiple types of the marketplaces. However, since VC Marketplace goal is to connect SSI networks and fragmented issuers and verifiers, it is important to provide a protocol to transmit result of the governance.
+
+Specifically, an implementation of VC Marketplace might provide a standardized interface for issuers, verfiers and SSI network operators to provide data regarding the governance framework in use, authority of each marketplace participant and a stream of updates regarding the status of these participants. The format of this information might differ depending on the type of govenance system in use (centralized, decentralized, authoritive, democratic, etc.) Since no universal governance system for SSI applications was developed, at this time it is up to the marketplace developer and operator to collect this data and present it to the end users. 
+
+For the benefit of end users all the available information about marketplace participants should be presented in the UI. Namely, for the issuers this might include:
+- authority to issue certain type of credentials
+- legal status of the issuer
+- licenses and permits 
+- jurisdictions where VC issued will be valid  
 
 ### Reputation
+Reputation system is not strictly defines in this document. However, to build an inclusive, open VC marketplace it is important avoid it being populated with fradulent or irrelevant issuers or service providers (verifiers). Reputation system can be a good solution for this problem. VC marketplace reputation system can be built in a variety of methods ranging from proprietary and fully centralized algorithms to an open decentralized system. In both cases reputation system requires the marketplace to have a feedback loop where users can report back the status of each marketplace transaction. 
+
+Reporting of credential issuance, presentation and revocation back to the marketplace was included in this document specifically for this reason. It provides raw data that then can be utilized by the algorithm to compute a reputation score for each participant. 
 
 ### Payment (Detail Section)
 - Payment is often controversial, however a egalitarian marketplace would be able to drive standardization of Credential Schema and Formats.
