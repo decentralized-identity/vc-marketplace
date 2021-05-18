@@ -581,3 +581,16 @@ of a certain type. "Educational Credential Marketplace".
   - Add "Appendix" to Marketplace around possible Trust / Reputation Models
     - E.g. "Issuer Trust Graph" with Root of Trust, Whitelisting by Marketplace operator, Other Marketplace system. Externalic
 
+## Meeting Notes 5/18/2021
+
+- Let's make a Marketplace Plugfest that will demonstrate interoperability between several SSI providers! Example: KYC credentials issued through multiple networks and discovered by
+- Discoverability v 0.1: Discoverability is our key goal. As part of DIF open innovation, we can create an open interface that everyone can plug into.
+- Make VC Marketplace WG to define and prepare the Plug-fest
+  - Who are the participants?
+  - Which specs do we follow (WACI, credential manifest, presentation exchange)?
+  - Goals? (prove the cross-network VC discovery + exchange)
+- Expected result: open source marketplace prototype and proven interop between 3-4 parties. This will get the community excited and more involved in the idea.
+- What would be a scope that gives smth to the community & in the same time provides more learnings to the participants?
+- Can try using DIF F2F as a milestone
+- Use the learnings from Good Health Pass WG at ToIP
+- VC Marketplace prototype is a solution for chicken and egg problem. Instead of building ecosystem from scratch just join existing Marketplace and focus on just Issuance / Verificaton / Wallet piece
